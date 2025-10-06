@@ -1,0 +1,829 @@
+2025-10-03 22:28:22.913 INFO: ===========VERIFYING SETTINGS===========
+2025-10-03 22:28:22.914 INFO: MACE version: 0.3.14
+2025-10-03 22:28:22.914 DEBUG: Configuration: Namespace(config='config_mace_3bpa.yml', name='MACE_model', seed=123, work_dir='.', log_dir='.\\logs', model_dir='.', checkpoints_dir='.\\checkpoints', results_dir='.\\results', downloads_dir='.\\downloads', device='cpu', default_dtype='float32', distributed=False, launcher='slurm', log_level='INFO', plot=True, plot_frequency=0, plot_interaction_e=False, error_table='PerAtomRMSE', model='ScaleShiftMACE', r_max=4.0, radial_type='bessel', num_radial_basis=8, num_cutoff_basis=5, pair_repulsion=False, distance_transform='None', apply_cutoff=True, use_last_readout_only=False, use_embedding_readout=False, interaction='RealAgnosticResidualInteractionBlock', interaction_first='RealAgnosticResidualInteractionBlock', max_ell=3, correlation=3, use_reduced_cg=False, use_so3=False, use_agnostic_product=False, num_interactions=2, MLP_irreps='16x0e', radial_MLP='[64, 64, 64]', hidden_irreps='32x0e', edge_irreps=None, num_channels=32, max_L=0, gate='silu', scaling='rms_forces_scaling', avg_num_neighbors=1, compute_avg_num_neighbors=True, compute_stress=False, compute_forces=True, compute_polarizability=<function str2bool at 0x00000282E1BD7920>, compute_atomic_dipole=<function str2bool at 0x00000282E1BD7920>, train_file='BOTNet-datasets/dataset_3BPA/train_300K.xyz', valid_file=None, valid_fraction=0.05, test_file='BOTNet-datasets/dataset_3BPA/test_300K.xyz', test_dir=None, multi_processed_test=False, num_workers=0, pin_memory=True, atomic_numbers=None, mean=None, std=None, statistics_file=None, les_arguments=None, E0s='{1: -13.663181292231226, 6: -1029.2809654211628, 7: -1484.1187695035828, 8: -2042.0330099956639}', pseudolabel_replay=False, foundation_filter_elements=True, heads=None, multiheads_finetuning=True, foundation_head=None, weight_pt_head=1.0, real_pt_data_ratio_threshold=0.1, num_samples_pt=10000, force_mh_ft_lr=False, subselect_pt='random', filter_type_pt='none', allow_random_padding_pt=True, pt_train_file=None, pt_valid_file=None, foundation_model_elements=False, keep_isolated_atoms=False, energy_key='energy', forces_key='forces', virials_key='REF_virials', stress_key='REF_stress', dipole_key='dipole', polarizability_key='polarizability', head_key='head', charges_key='REF_charges', elec_temp_key='elec_temp', total_spin_key='total_spin', total_charge_key='total_charge', embedding_specs=None, skip_evaluate_heads='pt_head', loss='weighted', forces_weight=100.0, swa_forces_weight=100.0, energy_weight=1.0, swa_energy_weight=1000.0, virials_weight=1.0, swa_virials_weight=10.0, stress_weight=1.0, swa_stress_weight=10.0, dipole_weight=1.0, swa_dipole_weight=1.0, swa_polarizability_weight=1.0, polarizability_weight=1.0, config_type_weights='{"Default":1.0}', huber_delta=0.01, optimizer='adam', beta=0.9, batch_size=20, valid_batch_size=10, lr=0.01, swa_lr=0.001, weight_decay=5e-07, amsgrad=True, scheduler='ReduceLROnPlateau', lr_factor=0.8, scheduler_patience=50, lr_scheduler_gamma=0.9993, swa=True, start_swa=75, lbfgs=False, ema=True, ema_decay=0.99, max_num_epochs=100, patience=2048, foundation_model=None, foundation_model_readout=True, eval_interval=1, keep_checkpoints=False, save_all_checkpoints=False, restart_latest=False, save_cpu=False, clip_grad=10.0, dry_run=False, enable_cueq=False, only_cueq=False, enable_oeq=False, wandb=False, wandb_dir=None, wandb_project='', wandb_entity='', wandb_name='', wandb_log_hypers=['num_channels', 'max_L', 'correlation', 'lr', 'swa_lr', 'weight_decay', 'batch_size', 'max_num_epochs', 'start_swa', 'energy_weight', 'forces_weight'], key_specification=KeySpecification(info_keys={'energy': 'energy', 'stress': 'REF_stress', 'virials': 'REF_virials', 'dipole': 'dipole', 'head': 'head', 'elec_temp': 'elec_temp', 'total_charge': 'total_charge', 'polarizability': 'polarizability', 'total_spin': 'total_spin'}, arrays_keys={'forces': 'forces', 'charges': 'REF_charges'}))
+2025-10-03 22:28:22.915 INFO: Using CPU
+2025-10-03 22:28:23.884 DEBUG: Popen(['git', 'version'], cwd=c:\Users\shann\OneDrive\Desktop\Maestria\ML_calc\Test, stdin=None, shell=False, universal_newlines=False)
+2025-10-03 22:28:23.942 DEBUG: Popen(['git', 'version'], cwd=c:\Users\shann\OneDrive\Desktop\Maestria\ML_calc\Test, stdin=None, shell=False, universal_newlines=False)
+2025-10-03 22:28:24.048 DEBUG: sys.platform='win32', git_executable='git'
+2025-10-03 22:28:24.051 DEBUG: Error accessing Git repository: c:\Users\shann\OneDrive\Desktop\Maestria\ML_calc\Test
+2025-10-03 22:28:24.051 INFO: ===========LOADING INPUT DATA===========
+2025-10-03 22:28:24.051 INFO: Using heads: ['Default']
+2025-10-03 22:28:24.051 INFO: Using the key specifications to parse data:
+2025-10-03 22:28:24.052 INFO: Default: KeySpecification(info_keys={'energy': 'energy', 'stress': 'REF_stress', 'virials': 'REF_virials', 'dipole': 'dipole', 'head': 'head', 'elec_temp': 'elec_temp', 'total_charge': 'total_charge', 'polarizability': 'polarizability', 'total_spin': 'total_spin'}, arrays_keys={'forces': 'forces', 'charges': 'REF_charges'})
+2025-10-03 22:28:24.052 INFO: =============    Processing head Default     ===========
+2025-10-03 22:28:24.053 DEBUG: Loading training file: BOTNet-datasets/dataset_3BPA/train_300K.xyz
+2025-10-03 22:28:24.843 WARNING: Since ASE version 3.23.0b1, using energy_key 'energy' is no longer safe when communicating between MACE and ASE. We recommend using a different key, rewriting 'energy' to 'REF_energy'. You need to use --energy_key='REF_energy' to specify the chosen key name.
+2025-10-03 22:28:24.951 WARNING: Since ASE version 3.23.0b1, using forces_key 'forces' is no longer safe when communicating between MACE and ASE. We recommend using a different key, rewriting 'forces' to 'REF_forces'. You need to use --forces_key='REF_forces' to specify the chosen key name.
+2025-10-03 22:28:25.046 INFO: Training set 1/1 [energy: 500, stress: 0, virials: 0, dipole components: 0, head: 500, elec_temp: 0, total_charge: 0, polarizability: 0, total_spin: 0, forces: 500, charges: 0]
+2025-10-03 22:28:25.049 INFO: Total Training set [energy: 500, stress: 0, virials: 0, dipole components: 0, head: 500, elec_temp: 0, total_charge: 0, polarizability: 0, total_spin: 0, forces: 500, charges: 0]
+2025-10-03 22:28:25.049 INFO: No validation set provided, splitting training data instead.
+2025-10-03 22:28:25.076 INFO: Using random 5% of training set for validation with indices saved in: ./valid_indices_123.txt
+2025-10-03 22:28:25.080 INFO: Random Split Training set [energy: 475, stress: 0, virials: 0, dipole components: 0, head: 475, elec_temp: 0, total_charge: 0, polarizability: 0, total_spin: 0, forces: 475, charges: 0]
+2025-10-03 22:28:25.081 INFO: Random Split Validation set [energy: 25, stress: 0, virials: 0, dipole components: 0, head: 25, elec_temp: 0, total_charge: 0, polarizability: 0, total_spin: 0, forces: 25, charges: 0]
+2025-10-03 22:28:26.141 WARNING: Since ASE version 3.23.0b1, using energy_key 'energy' is no longer safe when communicating between MACE and ASE. We recommend using a different key, rewriting 'energy' to 'REF_energy'. You need to use --energy_key='REF_energy' to specify the chosen key name.
+2025-10-03 22:28:26.391 WARNING: Since ASE version 3.23.0b1, using forces_key 'forces' is no longer safe when communicating between MACE and ASE. We recommend using a different key, rewriting 'forces' to 'REF_forces'. You need to use --forces_key='REF_forces' to specify the chosen key name.
+2025-10-03 22:28:26.655 INFO: Test set 1/1 [energy: 1669, stress: 0, virials: 0, dipole components: 0, head: 1669, elec_temp: 0, total_charge: 0, polarizability: 0, total_spin: 0, forces: 1669, charges: 0]
+2025-10-03 22:28:26.664 INFO: Total Test set [energy: 1669, stress: 0, virials: 0, dipole components: 0, head: 1669, elec_temp: 0, total_charge: 0, polarizability: 0, total_spin: 0, forces: 1669, charges: 0]
+2025-10-03 22:28:26.664 INFO: Total number of configurations: train=475, valid=25, tests=[Default_Default: 1669],
+2025-10-03 22:28:26.667 INFO: Atomic Numbers used: [1, 6, 7, 8]
+2025-10-03 22:28:26.667 INFO: Isolated Atomic Energies (E0s) not in training file, using command line argument
+2025-10-03 22:28:26.668 INFO: Atomic Energies used (z: eV) for head Default: {1: -13.663181292231226, 6: -1029.2809654211628, 7: -1484.1187695035828, 8: -2042.0330099956639}
+2025-10-03 22:28:26.668 INFO: Processing datasets for head 'Default'
+2025-10-03 22:28:27.241 DEBUG: Successfully loaded dataset from ASE files: ['BOTNet-datasets/dataset_3BPA/train_300K.xyz']
+2025-10-03 22:28:27.241 INFO: Combining 1 list datasets for head 'Default'
+2025-10-03 22:28:27.261 INFO: Head 'Default' training dataset size: 475
+2025-10-03 22:28:27.277 INFO: Computing average number of neighbors
+2025-10-03 22:28:27.445 INFO: Average number of neighbors: 11.992914199829102
+2025-10-03 22:28:27.445 INFO: During training the following quantities will be reported: energy, forces
+2025-10-03 22:28:27.445 INFO: ===========MODEL DETAILS===========
+2025-10-03 22:28:27.576 INFO: Building model
+2025-10-03 22:28:27.576 INFO: Message passing with 32 channels and max_L=0 (32x0e)
+2025-10-03 22:28:27.576 INFO: 2 layers, each with correlation order: 3 (body order: 4) and spherical harmonics up to: l=3
+2025-10-03 22:28:27.576 INFO: 8 radial and 5 basis functions
+2025-10-03 22:28:27.577 INFO: Radial cutoff: 4.0 A (total receptive field for each atom: 8.0 A)
+2025-10-03 22:28:27.577 INFO: Distance transform for radial basis functions: None
+2025-10-03 22:28:27.577 INFO: Hidden irreps: 32x0e
+2025-10-03 22:28:29.516 DEBUG: ScaleShiftMACE(
+  (node_embedding): LinearNodeEmbeddingBlock(
+    (linear): Linear(4x0e -> 32x0e | 128 weights)
+  )
+  (radial_embedding): RadialEmbeddingBlock(
+    (bessel_fn): BesselBasis(r_max=4.0, num_basis=8, trainable=False)
+    (cutoff_fn): PolynomialCutoff(p=5, r_max=4.0)
+  )
+  (spherical_harmonics): SphericalHarmonics()
+  (atomic_energies_fn): AtomicEnergiesBlock(energies=[[-13.6632, -1029.2810, -1484.1188, -2042.0330]])
+  (interactions): ModuleList(
+    (0-1): 2 x RealAgnosticResidualInteractionBlock(
+      (linear_up): Linear(32x0e -> 32x0e | 1024 weights)
+      (conv_tp): TensorProduct(32x0e x 1x0e+1x1o+1x2e+1x3o -> 32x0e+32x1o+32x2e+32x3o | 128 paths | 128 weights)
+      (conv_tp_weights): FullyConnectedNet[8, 64, 64, 64, 128]
+      (linear): Linear(32x0e+32x1o+32x2e+32x3o -> 32x0e+32x1o+32x2e+32x3o | 4096 weights)
+      (skip_tp): FullyConnectedTensorProduct(32x0e x 4x0e -> 32x0e | 4096 paths | 4096 weights)
+      (reshape): reshape_irreps()
+    )
+  )
+  (products): ModuleList(
+    (0-1): 2 x EquivariantProductBasisBlock(
+      (symmetric_contractions): SymmetricContraction(
+        (contractions): ModuleList(
+          (0): Contraction(
+            (contractions_weighting): ModuleList(
+              (0-1): 2 x GraphModule()
+            )
+            (contractions_features): ModuleList(
+              (0-1): 2 x GraphModule()
+            )
+            (weights): ParameterList(
+                (0): Parameter containing: [torch.float32 of size 4x4x32]
+                (1): Parameter containing: [torch.float32 of size 4x1x32]
+            )
+            (graph_opt_main): GraphModule()
+          )
+        )
+      )
+      (linear): Linear(32x0e -> 32x0e | 1024 weights)
+    )
+  )
+  (readouts): ModuleList(
+    (0): LinearReadoutBlock(
+      (linear): Linear(32x0e -> 1x0e | 32 weights)
+    )
+    (1): NonLinearReadoutBlock(
+      (linear_1): Linear(32x0e -> 16x0e | 512 weights)
+      (non_linearity): Activation [x] (16x0e -> 16x0e)
+      (linear_2): Linear(16x0e -> 1x0e | 16 weights)
+    )
+  )
+  (scale_shift): ScaleShiftBlock(scale=0.9475, shift=-4.9936)
+)
+2025-10-03 22:28:29.518 INFO: Total number of parameters: 62128
+2025-10-03 22:28:29.518 INFO: 
+2025-10-03 22:28:29.518 INFO: ===========OPTIMIZER INFORMATION===========
+2025-10-03 22:28:29.518 INFO: Using ADAM as parameter optimizer
+2025-10-03 22:28:29.518 INFO: Batch size: 20
+2025-10-03 22:28:29.518 INFO: Using Exponential Moving Average with decay: 0.99
+2025-10-03 22:28:29.518 INFO: Number of gradient updates: 2375
+2025-10-03 22:28:29.519 INFO: Learning rate: 0.01, weight decay: 5e-07
+2025-10-03 22:28:29.519 INFO: WeightedEnergyForcesLoss(energy_weight=1.000, forces_weight=100.000)
+2025-10-03 22:28:29.519 INFO: Stage Two (after 75 epochs) with loss function: WeightedEnergyForcesLoss(energy_weight=1000.000, forces_weight=100.000), with energy weight : 1000.0, forces weight : 100.0 and learning rate : 0.001
+2025-10-03 22:28:29.637 INFO: Using gradient clipping with tolerance=10.000
+2025-10-03 22:28:29.637 INFO: 
+2025-10-03 22:28:29.637 INFO: ===========TRAINING===========
+2025-10-03 22:28:29.637 INFO: Started training, reporting errors on validation set
+2025-10-03 22:28:29.637 INFO: Loss metrics on validation set
+2025-10-03 22:28:31.330 INFO: Initial: head: Default, loss=11.11455059, RMSE_E_per_atom=   10.55 meV, RMSE_F=  975.98 meV / A
+2025-10-03 22:28:53.959 INFO: ===========VERIFYING SETTINGS===========
+2025-10-03 22:28:53.959 INFO: MACE version: 0.3.14
+2025-10-03 22:28:53.959 DEBUG: Configuration: Namespace(config='config_mace_3bpa.yml', name='MACE_model', seed=123, work_dir='.', log_dir='.\\logs', model_dir='.', checkpoints_dir='.\\checkpoints', results_dir='.\\results', downloads_dir='.\\downloads', device='cpu', default_dtype='float32', distributed=False, launcher='slurm', log_level='INFO', plot=True, plot_frequency=0, plot_interaction_e=False, error_table='PerAtomRMSE', model='ScaleShiftMACE', r_max=4.0, radial_type='bessel', num_radial_basis=8, num_cutoff_basis=5, pair_repulsion=False, distance_transform='None', apply_cutoff=True, use_last_readout_only=False, use_embedding_readout=False, interaction='RealAgnosticResidualInteractionBlock', interaction_first='RealAgnosticResidualInteractionBlock', max_ell=3, correlation=3, use_reduced_cg=False, use_so3=False, use_agnostic_product=False, num_interactions=2, MLP_irreps='16x0e', radial_MLP='[64, 64, 64]', hidden_irreps='32x0e', edge_irreps=None, num_channels=32, max_L=0, gate='silu', scaling='rms_forces_scaling', avg_num_neighbors=1, compute_avg_num_neighbors=True, compute_stress=False, compute_forces=True, compute_polarizability=<function str2bool at 0x0000026CCF343920>, compute_atomic_dipole=<function str2bool at 0x0000026CCF343920>, train_file='BOTNet-datasets/dataset_3BPA/train_300K.xyz', valid_file=None, valid_fraction=0.05, test_file='BOTNet-datasets/dataset_3BPA/test_300K.xyz', test_dir=None, multi_processed_test=False, num_workers=0, pin_memory=True, atomic_numbers=None, mean=None, std=None, statistics_file=None, les_arguments=None, E0s='{1: -13.663181292231226, 6: -1029.2809654211628, 7: -1484.1187695035828, 8: -2042.0330099956639}', pseudolabel_replay=False, foundation_filter_elements=True, heads=None, multiheads_finetuning=True, foundation_head=None, weight_pt_head=1.0, real_pt_data_ratio_threshold=0.1, num_samples_pt=10000, force_mh_ft_lr=False, subselect_pt='random', filter_type_pt='none', allow_random_padding_pt=True, pt_train_file=None, pt_valid_file=None, foundation_model_elements=False, keep_isolated_atoms=False, energy_key='energy', forces_key='forces', virials_key='REF_virials', stress_key='REF_stress', dipole_key='dipole', polarizability_key='polarizability', head_key='head', charges_key='REF_charges', elec_temp_key='elec_temp', total_spin_key='total_spin', total_charge_key='total_charge', embedding_specs=None, skip_evaluate_heads='pt_head', loss='weighted', forces_weight=100.0, swa_forces_weight=100.0, energy_weight=1.0, swa_energy_weight=1000.0, virials_weight=1.0, swa_virials_weight=10.0, stress_weight=1.0, swa_stress_weight=10.0, dipole_weight=1.0, swa_dipole_weight=1.0, swa_polarizability_weight=1.0, polarizability_weight=1.0, config_type_weights='{"Default":1.0}', huber_delta=0.01, optimizer='adam', beta=0.9, batch_size=20, valid_batch_size=10, lr=0.01, swa_lr=0.001, weight_decay=5e-07, amsgrad=True, scheduler='ReduceLROnPlateau', lr_factor=0.8, scheduler_patience=50, lr_scheduler_gamma=0.9993, swa=True, start_swa=3, lbfgs=False, ema=True, ema_decay=0.99, max_num_epochs=5, patience=2048, foundation_model=None, foundation_model_readout=True, eval_interval=1, keep_checkpoints=False, save_all_checkpoints=False, restart_latest=False, save_cpu=False, clip_grad=10.0, dry_run=False, enable_cueq=False, only_cueq=False, enable_oeq=False, wandb=False, wandb_dir=None, wandb_project='', wandb_entity='', wandb_name='', wandb_log_hypers=['num_channels', 'max_L', 'correlation', 'lr', 'swa_lr', 'weight_decay', 'batch_size', 'max_num_epochs', 'start_swa', 'energy_weight', 'forces_weight'], key_specification=KeySpecification(info_keys={'energy': 'energy', 'stress': 'REF_stress', 'virials': 'REF_virials', 'dipole': 'dipole', 'head': 'head', 'elec_temp': 'elec_temp', 'total_charge': 'total_charge', 'polarizability': 'polarizability', 'total_spin': 'total_spin'}, arrays_keys={'forces': 'forces', 'charges': 'REF_charges'}))
+2025-10-03 22:28:53.959 INFO: Using CPU
+2025-10-03 22:28:54.072 DEBUG: Popen(['git', 'version'], cwd=c:\Users\shann\OneDrive\Desktop\Maestria\ML_calc\Test, stdin=None, shell=False, universal_newlines=False)
+2025-10-03 22:28:54.170 DEBUG: Popen(['git', 'version'], cwd=c:\Users\shann\OneDrive\Desktop\Maestria\ML_calc\Test, stdin=None, shell=False, universal_newlines=False)
+2025-10-03 22:28:54.229 DEBUG: sys.platform='win32', git_executable='git'
+2025-10-03 22:28:54.233 DEBUG: Error accessing Git repository: c:\Users\shann\OneDrive\Desktop\Maestria\ML_calc\Test
+2025-10-03 22:28:54.233 INFO: ===========LOADING INPUT DATA===========
+2025-10-03 22:28:54.233 INFO: Using heads: ['Default']
+2025-10-03 22:28:54.234 INFO: Using the key specifications to parse data:
+2025-10-03 22:28:54.234 INFO: Default: KeySpecification(info_keys={'energy': 'energy', 'stress': 'REF_stress', 'virials': 'REF_virials', 'dipole': 'dipole', 'head': 'head', 'elec_temp': 'elec_temp', 'total_charge': 'total_charge', 'polarizability': 'polarizability', 'total_spin': 'total_spin'}, arrays_keys={'forces': 'forces', 'charges': 'REF_charges'})
+2025-10-03 22:28:54.234 INFO: =============    Processing head Default     ===========
+2025-10-03 22:28:54.234 DEBUG: Loading training file: BOTNet-datasets/dataset_3BPA/train_300K.xyz
+2025-10-03 22:28:54.697 WARNING: Since ASE version 3.23.0b1, using energy_key 'energy' is no longer safe when communicating between MACE and ASE. We recommend using a different key, rewriting 'energy' to 'REF_energy'. You need to use --energy_key='REF_energy' to specify the chosen key name.
+2025-10-03 22:28:54.777 WARNING: Since ASE version 3.23.0b1, using forces_key 'forces' is no longer safe when communicating between MACE and ASE. We recommend using a different key, rewriting 'forces' to 'REF_forces'. You need to use --forces_key='REF_forces' to specify the chosen key name.
+2025-10-03 22:28:54.883 INFO: Training set 1/1 [energy: 500, stress: 0, virials: 0, dipole components: 0, head: 500, elec_temp: 0, total_charge: 0, polarizability: 0, total_spin: 0, forces: 500, charges: 0]
+2025-10-03 22:28:54.886 INFO: Total Training set [energy: 500, stress: 0, virials: 0, dipole components: 0, head: 500, elec_temp: 0, total_charge: 0, polarizability: 0, total_spin: 0, forces: 500, charges: 0]
+2025-10-03 22:28:54.886 INFO: No validation set provided, splitting training data instead.
+2025-10-03 22:28:54.892 INFO: Using random 5% of training set for validation with indices saved in: ./valid_indices_123.txt
+2025-10-03 22:28:54.896 INFO: Random Split Training set [energy: 475, stress: 0, virials: 0, dipole components: 0, head: 475, elec_temp: 0, total_charge: 0, polarizability: 0, total_spin: 0, forces: 475, charges: 0]
+2025-10-03 22:28:54.896 INFO: Random Split Validation set [energy: 25, stress: 0, virials: 0, dipole components: 0, head: 25, elec_temp: 0, total_charge: 0, polarizability: 0, total_spin: 0, forces: 25, charges: 0]
+2025-10-03 22:28:56.556 WARNING: Since ASE version 3.23.0b1, using energy_key 'energy' is no longer safe when communicating between MACE and ASE. We recommend using a different key, rewriting 'energy' to 'REF_energy'. You need to use --energy_key='REF_energy' to specify the chosen key name.
+2025-10-03 22:28:57.089 WARNING: Since ASE version 3.23.0b1, using forces_key 'forces' is no longer safe when communicating between MACE and ASE. We recommend using a different key, rewriting 'forces' to 'REF_forces'. You need to use --forces_key='REF_forces' to specify the chosen key name.
+2025-10-03 22:28:57.715 INFO: Test set 1/1 [energy: 1669, stress: 0, virials: 0, dipole components: 0, head: 1669, elec_temp: 0, total_charge: 0, polarizability: 0, total_spin: 0, forces: 1669, charges: 0]
+2025-10-03 22:28:57.729 INFO: Total Test set [energy: 1669, stress: 0, virials: 0, dipole components: 0, head: 1669, elec_temp: 0, total_charge: 0, polarizability: 0, total_spin: 0, forces: 1669, charges: 0]
+2025-10-03 22:28:57.730 INFO: Total number of configurations: train=475, valid=25, tests=[Default_Default: 1669],
+2025-10-03 22:28:57.733 INFO: Atomic Numbers used: [1, 6, 7, 8]
+2025-10-03 22:28:57.734 INFO: Isolated Atomic Energies (E0s) not in training file, using command line argument
+2025-10-03 22:28:57.734 INFO: Atomic Energies used (z: eV) for head Default: {1: -13.663181292231226, 6: -1029.2809654211628, 7: -1484.1187695035828, 8: -2042.0330099956639}
+2025-10-03 22:28:57.735 INFO: Processing datasets for head 'Default'
+2025-10-03 22:28:58.239 DEBUG: Successfully loaded dataset from ASE files: ['BOTNet-datasets/dataset_3BPA/train_300K.xyz']
+2025-10-03 22:28:58.239 INFO: Combining 1 list datasets for head 'Default'
+2025-10-03 22:28:58.272 INFO: Head 'Default' training dataset size: 475
+2025-10-03 22:28:58.273 INFO: Computing average number of neighbors
+2025-10-03 22:28:58.492 INFO: Average number of neighbors: 11.992914199829102
+2025-10-03 22:28:58.492 INFO: During training the following quantities will be reported: energy, forces
+2025-10-03 22:28:58.492 INFO: ===========MODEL DETAILS===========
+2025-10-03 22:28:58.655 INFO: Building model
+2025-10-03 22:28:58.655 INFO: Message passing with 32 channels and max_L=0 (32x0e)
+2025-10-03 22:28:58.655 INFO: 2 layers, each with correlation order: 3 (body order: 4) and spherical harmonics up to: l=3
+2025-10-03 22:28:58.655 INFO: 8 radial and 5 basis functions
+2025-10-03 22:28:58.655 INFO: Radial cutoff: 4.0 A (total receptive field for each atom: 8.0 A)
+2025-10-03 22:28:58.656 INFO: Distance transform for radial basis functions: None
+2025-10-03 22:28:58.656 INFO: Hidden irreps: 32x0e
+2025-10-03 22:28:59.377 INFO: Epoch 0: head: Default, loss=3.70784783, RMSE_E_per_atom=  317.56 meV, RMSE_F=  557.62 meV / A
+2025-10-03 22:28:59.379 DEBUG: Saving checkpoint: .\checkpoints\MACE_model_run-123_epoch-0.pt
+2025-10-03 22:29:01.187 DEBUG: ScaleShiftMACE(
+  (node_embedding): LinearNodeEmbeddingBlock(
+    (linear): Linear(4x0e -> 32x0e | 128 weights)
+  )
+  (radial_embedding): RadialEmbeddingBlock(
+    (bessel_fn): BesselBasis(r_max=4.0, num_basis=8, trainable=False)
+    (cutoff_fn): PolynomialCutoff(p=5, r_max=4.0)
+  )
+  (spherical_harmonics): SphericalHarmonics()
+  (atomic_energies_fn): AtomicEnergiesBlock(energies=[[-13.6632, -1029.2810, -1484.1188, -2042.0330]])
+  (interactions): ModuleList(
+    (0-1): 2 x RealAgnosticResidualInteractionBlock(
+      (linear_up): Linear(32x0e -> 32x0e | 1024 weights)
+      (conv_tp): TensorProduct(32x0e x 1x0e+1x1o+1x2e+1x3o -> 32x0e+32x1o+32x2e+32x3o | 128 paths | 128 weights)
+      (conv_tp_weights): FullyConnectedNet[8, 64, 64, 64, 128]
+      (linear): Linear(32x0e+32x1o+32x2e+32x3o -> 32x0e+32x1o+32x2e+32x3o | 4096 weights)
+      (skip_tp): FullyConnectedTensorProduct(32x0e x 4x0e -> 32x0e | 4096 paths | 4096 weights)
+      (reshape): reshape_irreps()
+    )
+  )
+  (products): ModuleList(
+    (0-1): 2 x EquivariantProductBasisBlock(
+      (symmetric_contractions): SymmetricContraction(
+        (contractions): ModuleList(
+          (0): Contraction(
+            (contractions_weighting): ModuleList(
+              (0-1): 2 x GraphModule()
+            )
+            (contractions_features): ModuleList(
+              (0-1): 2 x GraphModule()
+            )
+            (weights): ParameterList(
+                (0): Parameter containing: [torch.float32 of size 4x4x32]
+                (1): Parameter containing: [torch.float32 of size 4x1x32]
+            )
+            (graph_opt_main): GraphModule()
+          )
+        )
+      )
+      (linear): Linear(32x0e -> 32x0e | 1024 weights)
+    )
+  )
+  (readouts): ModuleList(
+    (0): LinearReadoutBlock(
+      (linear): Linear(32x0e -> 1x0e | 32 weights)
+    )
+    (1): NonLinearReadoutBlock(
+      (linear_1): Linear(32x0e -> 16x0e | 512 weights)
+      (non_linearity): Activation [x] (16x0e -> 16x0e)
+      (linear_2): Linear(16x0e -> 1x0e | 16 weights)
+    )
+  )
+  (scale_shift): ScaleShiftBlock(scale=0.9475, shift=-4.9936)
+)
+2025-10-03 22:29:01.190 INFO: Total number of parameters: 62128
+2025-10-03 22:29:01.190 INFO: 
+2025-10-03 22:29:01.190 INFO: ===========OPTIMIZER INFORMATION===========
+2025-10-03 22:29:01.190 INFO: Using ADAM as parameter optimizer
+2025-10-03 22:29:01.190 INFO: Batch size: 20
+2025-10-03 22:29:01.191 INFO: Using Exponential Moving Average with decay: 0.99
+2025-10-03 22:29:01.191 INFO: Number of gradient updates: 118
+2025-10-03 22:29:01.191 INFO: Learning rate: 0.01, weight decay: 5e-07
+2025-10-03 22:29:01.191 INFO: WeightedEnergyForcesLoss(energy_weight=1.000, forces_weight=100.000)
+2025-10-03 22:29:01.191 INFO: Stage Two (after 3 epochs) with loss function: WeightedEnergyForcesLoss(energy_weight=1000.000, forces_weight=100.000), with energy weight : 1000.0, forces weight : 100.0 and learning rate : 0.001
+2025-10-03 22:29:01.404 INFO: Using gradient clipping with tolerance=10.000
+2025-10-03 22:29:01.405 INFO: 
+2025-10-03 22:29:01.406 INFO: ===========TRAINING===========
+2025-10-03 22:29:01.406 INFO: Started training, reporting errors on validation set
+2025-10-03 22:29:01.406 INFO: Loss metrics on validation set
+2025-10-03 22:29:03.950 INFO: Initial: head: Default, loss=11.11455059, RMSE_E_per_atom=   10.55 meV, RMSE_F=  975.98 meV / A
+2025-10-03 22:29:57.353 INFO: Epoch 1: head: Default, loss=2.10039139, RMSE_E_per_atom=  368.81 meV, RMSE_F=  417.03 meV / A
+2025-10-03 22:29:57.362 DEBUG: Deleting old checkpoint file: .\checkpoints\MACE_model_run-123_epoch-0.pt
+2025-10-03 22:29:57.368 DEBUG: Saving checkpoint: .\checkpoints\MACE_model_run-123_epoch-1.pt
+2025-10-03 22:30:18.504 INFO: Epoch 0: head: Default, loss=3.70784736, RMSE_E_per_atom=  317.56 meV, RMSE_F=  557.62 meV / A
+2025-10-03 22:30:18.508 DEBUG: Saving checkpoint: .\checkpoints\MACE_model_run-123_epoch-0.pt
+2025-10-03 22:30:36.184 INFO: Epoch 2: head: Default, loss=1.21789563, RMSE_E_per_atom=  371.21 meV, RMSE_F=  316.52 meV / A
+2025-10-03 22:30:36.191 DEBUG: Deleting old checkpoint file: .\checkpoints\MACE_model_run-123_epoch-1.pt
+2025-10-03 22:30:36.196 DEBUG: Saving checkpoint: .\checkpoints\MACE_model_run-123_epoch-2.pt
+2025-10-03 22:31:00.699 INFO: Epoch 1: head: Default, loss=2.10038996, RMSE_E_per_atom=  368.79 meV, RMSE_F=  417.03 meV / A
+2025-10-03 22:31:00.701 DEBUG: Deleting old checkpoint file: .\checkpoints\MACE_model_run-123_epoch-0.pt
+2025-10-03 22:31:00.703 DEBUG: Saving checkpoint: .\checkpoints\MACE_model_run-123_epoch-1.pt
+2025-10-03 22:31:19.081 INFO: Epoch 3: head: Default, loss=0.88584757, RMSE_E_per_atom=  317.09 meV, RMSE_F=  271.04 meV / A
+2025-10-03 22:31:19.085 DEBUG: Deleting old checkpoint file: .\checkpoints\MACE_model_run-123_epoch-2.pt
+2025-10-03 22:31:19.086 DEBUG: Saving checkpoint: .\checkpoints\MACE_model_run-123_epoch-3.pt
+2025-10-03 22:31:24.938 INFO: Epoch 2: head: Default, loss=1.19996405, RMSE_E_per_atom=  368.27 meV, RMSE_F=  314.29 meV / A
+2025-10-03 22:31:24.941 DEBUG: Deleting old checkpoint file: .\checkpoints\MACE_model_run-123_epoch-1.pt
+2025-10-03 22:31:24.942 DEBUG: Saving checkpoint: .\checkpoints\MACE_model_run-123_epoch-2.pt
+2025-10-03 22:31:24.983 INFO: Changing loss based on Stage Two Weights
+2025-10-03 22:31:50.803 INFO: Epoch 4: head: Default, loss=0.72039413, RMSE_E_per_atom=  223.45 meV, RMSE_F=  245.30 meV / A
+2025-10-03 22:31:50.807 DEBUG: Deleting old checkpoint file: .\checkpoints\MACE_model_run-123_epoch-3.pt
+2025-10-03 22:31:50.809 DEBUG: Saving checkpoint: .\checkpoints\MACE_model_run-123_epoch-4.pt
+2025-10-03 22:31:57.430 INFO: Epoch 3: head: Default, loss=1.73713100, RMSE_E_per_atom=   40.66 meV, RMSE_F=  359.19 meV / A
+2025-10-03 22:31:57.433 DEBUG: Saving checkpoint: .\checkpoints\MACE_model_run-123_epoch-3_swa.pt
+2025-10-03 22:32:21.313 INFO: Epoch 5: head: Default, loss=0.61656588, RMSE_E_per_atom=  154.77 meV, RMSE_F=  227.26 meV / A
+2025-10-03 22:32:21.315 DEBUG: Deleting old checkpoint file: .\checkpoints\MACE_model_run-123_epoch-4.pt
+2025-10-03 22:32:21.319 DEBUG: Saving checkpoint: .\checkpoints\MACE_model_run-123_epoch-5.pt
+2025-10-03 22:32:28.989 INFO: Epoch 4: head: Default, loss=1.14130545, RMSE_E_per_atom=    8.50 meV, RMSE_F=  308.08 meV / A
+2025-10-03 22:32:28.994 DEBUG: Deleting old checkpoint file: .\checkpoints\MACE_model_run-123_epoch-3_swa.pt
+2025-10-03 22:32:28.996 DEBUG: Saving checkpoint: .\checkpoints\MACE_model_run-123_epoch-4_swa.pt
+2025-10-03 22:32:29.040 INFO: Training complete
+2025-10-03 22:32:29.040 INFO: 
+2025-10-03 22:32:29.041 INFO: ===========RESULTS===========
+2025-10-03 22:32:32.088 INFO: Loading checkpoint: .\checkpoints\MACE_model_run-123_epoch-5.pt
+2025-10-03 22:32:32.140 INFO: Loaded Stage one model from epoch 5 for evaluation
+2025-10-03 22:32:32.141 INFO: Saving model to checkpoints\MACE_model_run-123.model
+2025-10-03 22:32:32.562 INFO: Compiling model, saving metadata to MACE_model_compiled.model
+2025-10-03 22:32:34.998 INFO: Computing metrics for training, validation, and test sets
+2025-10-03 22:32:34.999 INFO: Skipping evaluation for heads: ['pt_head']
+2025-10-03 22:32:34.999 INFO: Evaluating train_Default ...
+2025-10-03 22:32:45.267 INFO: Evaluating valid_Default ...
+2025-10-03 22:32:46.155 INFO: Error-table on TRAIN and VALID:
++---------------+---------------------+------------------+-------------------+
+|  config_type  | RMSE E / meV / atom | RMSE F / meV / A | relative F RMSE % |
++---------------+---------------------+------------------+-------------------+
+| train_Default |          155.0      |        222.4     |         23.50     |
+| valid_Default |          154.8      |        227.3     |         23.25     |
++---------------+---------------------+------------------+-------------------+
+2025-10-03 22:32:46.155 INFO: Evaluating Default_Default ...
+2025-10-03 22:32:50.268 INFO: Epoch 6: head: Default, loss=0.52613962, RMSE_E_per_atom=  113.39 meV, RMSE_F=  209.94 meV / A
+2025-10-03 22:32:50.272 DEBUG: Deleting old checkpoint file: .\checkpoints\MACE_model_run-123_epoch-5.pt
+2025-10-03 22:32:50.274 DEBUG: Saving checkpoint: .\checkpoints\MACE_model_run-123_epoch-6.pt
+2025-10-03 22:33:15.263 INFO: Epoch 7: head: Default, loss=0.45255765, RMSE_E_per_atom=   79.48 meV, RMSE_F=  194.89 meV / A
+2025-10-03 22:33:15.266 DEBUG: Deleting old checkpoint file: .\checkpoints\MACE_model_run-123_epoch-6.pt
+2025-10-03 22:33:15.267 DEBUG: Saving checkpoint: .\checkpoints\MACE_model_run-123_epoch-7.pt
+2025-10-03 22:33:32.156 INFO: Error-table on TEST:
++-----------------+---------------------+------------------+-------------------+
+|   config_type   | RMSE E / meV / atom | RMSE F / meV / A | relative F RMSE % |
++-----------------+---------------------+------------------+-------------------+
+| Default_Default |          155.1      |        226.1     |         23.53     |
++-----------------+---------------------+------------------+-------------------+
+2025-10-03 22:33:32.157 DEBUG: Running inference on train_Default dataset
+2025-10-03 22:33:32.572 DEBUG: Plotting failed: too many indices for tensor of dimension 1
+2025-10-03 22:33:32.578 INFO: Loading checkpoint: .\checkpoints\MACE_model_run-123_epoch-4_swa.pt
+2025-10-03 22:33:32.605 INFO: Loaded Stage two model from epoch 4 for evaluation
+2025-10-03 22:33:32.606 INFO: Saving model to checkpoints\MACE_model_run-123_stagetwo.model
+2025-10-03 22:33:33.020 INFO: Compiling model, saving metadata MACE_model_stagetwo_compiled.model
+2025-10-03 22:33:35.071 INFO: Computing metrics for training, validation, and test sets
+2025-10-03 22:33:35.073 INFO: Skipping evaluation for heads: ['pt_head']
+2025-10-03 22:33:35.073 INFO: Evaluating train_Default ...
+2025-10-03 22:33:43.065 INFO: Epoch 8: head: Default, loss=0.40181884, RMSE_E_per_atom=   47.82 meV, RMSE_F=  183.77 meV / A
+2025-10-03 22:33:43.068 DEBUG: Deleting old checkpoint file: .\checkpoints\MACE_model_run-123_epoch-7.pt
+2025-10-03 22:33:43.068 DEBUG: Saving checkpoint: .\checkpoints\MACE_model_run-123_epoch-8.pt
+2025-10-03 22:33:46.521 INFO: Evaluating valid_Default ...
+2025-10-03 22:33:47.462 INFO: Error-table on TRAIN and VALID:
++---------------+---------------------+------------------+-------------------+
+|  config_type  | RMSE E / meV / atom | RMSE F / meV / A | relative F RMSE % |
++---------------+---------------------+------------------+-------------------+
+| train_Default |            9.1      |        301.5     |         31.83     |
+| valid_Default |            8.5      |        308.1     |         31.52     |
++---------------+---------------------+------------------+-------------------+
+2025-10-03 22:33:47.462 INFO: Evaluating Default_Default ...
+2025-10-03 22:34:09.119 INFO: Epoch 9: head: Default, loss=0.36305213, RMSE_E_per_atom=   18.98 meV, RMSE_F=  174.88 meV / A
+2025-10-03 22:34:09.121 DEBUG: Deleting old checkpoint file: .\checkpoints\MACE_model_run-123_epoch-8.pt
+2025-10-03 22:34:09.123 DEBUG: Saving checkpoint: .\checkpoints\MACE_model_run-123_epoch-9.pt
+2025-10-03 22:34:44.469 INFO: Error-table on TEST:
++-----------------+---------------------+------------------+-------------------+
+|   config_type   | RMSE E / meV / atom | RMSE F / meV / A | relative F RMSE % |
++-----------------+---------------------+------------------+-------------------+
+| Default_Default |            9.3      |        305.3     |         31.78     |
++-----------------+---------------------+------------------+-------------------+
+2025-10-03 22:34:44.470 DEBUG: Running inference on train_Default dataset
+2025-10-03 22:34:44.810 DEBUG: Plotting failed: too many indices for tensor of dimension 1
+2025-10-03 22:34:44.810 INFO: Done
+2025-10-03 22:34:45.336 INFO: Epoch 10: head: Default, loss=0.32219148, RMSE_E_per_atom=    3.66 meV, RMSE_F=  164.94 meV / A
+2025-10-03 22:34:45.338 DEBUG: Deleting old checkpoint file: .\checkpoints\MACE_model_run-123_epoch-9.pt
+2025-10-03 22:34:45.339 DEBUG: Saving checkpoint: .\checkpoints\MACE_model_run-123_epoch-10.pt
+2025-10-03 22:35:07.334 INFO: Epoch 11: head: Default, loss=0.28043956, RMSE_E_per_atom=   14.77 meV, RMSE_F=  153.89 meV / A
+2025-10-03 22:35:07.336 DEBUG: Deleting old checkpoint file: .\checkpoints\MACE_model_run-123_epoch-10.pt
+2025-10-03 22:35:07.338 DEBUG: Saving checkpoint: .\checkpoints\MACE_model_run-123_epoch-11.pt
+2025-10-03 22:35:27.973 INFO: Epoch 12: head: Default, loss=0.24376068, RMSE_E_per_atom=   18.38 meV, RMSE_F=  143.52 meV / A
+2025-10-03 22:35:27.976 DEBUG: Deleting old checkpoint file: .\checkpoints\MACE_model_run-123_epoch-11.pt
+2025-10-03 22:35:27.978 DEBUG: Saving checkpoint: .\checkpoints\MACE_model_run-123_epoch-12.pt
+2025-10-03 22:35:49.095 INFO: Epoch 13: head: Default, loss=0.21090771, RMSE_E_per_atom=   14.09 meV, RMSE_F=  133.39 meV / A
+2025-10-03 22:35:49.101 DEBUG: Deleting old checkpoint file: .\checkpoints\MACE_model_run-123_epoch-12.pt
+2025-10-03 22:35:49.103 DEBUG: Saving checkpoint: .\checkpoints\MACE_model_run-123_epoch-13.pt
+2025-10-03 22:36:11.863 INFO: Epoch 14: head: Default, loss=0.18753448, RMSE_E_per_atom=    2.84 meV, RMSE_F=  125.59 meV / A
+2025-10-03 22:36:11.866 DEBUG: Deleting old checkpoint file: .\checkpoints\MACE_model_run-123_epoch-13.pt
+2025-10-03 22:36:11.870 DEBUG: Saving checkpoint: .\checkpoints\MACE_model_run-123_epoch-14.pt
+2025-10-03 22:36:33.012 INFO: Epoch 15: head: Default, loss=0.16973960, RMSE_E_per_atom=    7.35 meV, RMSE_F=  119.23 meV / A
+2025-10-03 22:36:33.014 DEBUG: Deleting old checkpoint file: .\checkpoints\MACE_model_run-123_epoch-14.pt
+2025-10-03 22:36:33.016 DEBUG: Saving checkpoint: .\checkpoints\MACE_model_run-123_epoch-15.pt
+2025-10-03 22:36:55.701 INFO: Epoch 16: head: Default, loss=0.15217109, RMSE_E_per_atom=    1.90 meV, RMSE_F=  112.64 meV / A
+2025-10-03 22:36:55.704 DEBUG: Deleting old checkpoint file: .\checkpoints\MACE_model_run-123_epoch-15.pt
+2025-10-03 22:36:55.705 DEBUG: Saving checkpoint: .\checkpoints\MACE_model_run-123_epoch-16.pt
+2025-10-03 22:37:18.162 INFO: Epoch 17: head: Default, loss=0.13647309, RMSE_E_per_atom=    2.53 meV, RMSE_F=  106.46 meV / A
+2025-10-03 22:37:18.169 DEBUG: Deleting old checkpoint file: .\checkpoints\MACE_model_run-123_epoch-16.pt
+2025-10-03 22:37:18.173 DEBUG: Saving checkpoint: .\checkpoints\MACE_model_run-123_epoch-17.pt
+2025-10-03 22:37:45.137 INFO: Epoch 18: head: Default, loss=0.12368114, RMSE_E_per_atom=    5.30 meV, RMSE_F=  101.14 meV / A
+2025-10-03 22:37:45.140 DEBUG: Deleting old checkpoint file: .\checkpoints\MACE_model_run-123_epoch-17.pt
+2025-10-03 22:37:45.142 DEBUG: Saving checkpoint: .\checkpoints\MACE_model_run-123_epoch-18.pt
+2025-10-03 22:38:05.953 INFO: Epoch 19: head: Default, loss=0.11358938, RMSE_E_per_atom=    5.18 meV, RMSE_F=   96.74 meV / A
+2025-10-03 22:38:05.956 DEBUG: Deleting old checkpoint file: .\checkpoints\MACE_model_run-123_epoch-18.pt
+2025-10-03 22:38:05.957 DEBUG: Saving checkpoint: .\checkpoints\MACE_model_run-123_epoch-19.pt
+2025-10-03 22:38:27.078 INFO: Epoch 20: head: Default, loss=0.10527250, RMSE_E_per_atom=    3.04 meV, RMSE_F=   93.01 meV / A
+2025-10-03 22:38:27.081 DEBUG: Deleting old checkpoint file: .\checkpoints\MACE_model_run-123_epoch-19.pt
+2025-10-03 22:38:27.083 DEBUG: Saving checkpoint: .\checkpoints\MACE_model_run-123_epoch-20.pt
+2025-10-03 22:38:50.912 INFO: Epoch 21: head: Default, loss=0.09794202, RMSE_E_per_atom=    3.45 meV, RMSE_F=   89.58 meV / A
+2025-10-03 22:38:50.916 DEBUG: Deleting old checkpoint file: .\checkpoints\MACE_model_run-123_epoch-20.pt
+2025-10-03 22:38:50.918 DEBUG: Saving checkpoint: .\checkpoints\MACE_model_run-123_epoch-21.pt
+2025-10-03 22:39:14.733 INFO: Epoch 22: head: Default, loss=0.09172256, RMSE_E_per_atom=    2.36 meV, RMSE_F=   86.57 meV / A
+2025-10-03 22:39:14.736 DEBUG: Deleting old checkpoint file: .\checkpoints\MACE_model_run-123_epoch-21.pt
+2025-10-03 22:39:14.739 DEBUG: Saving checkpoint: .\checkpoints\MACE_model_run-123_epoch-22.pt
+2025-10-03 22:39:45.713 INFO: Epoch 23: head: Default, loss=0.08649176, RMSE_E_per_atom=    2.55 meV, RMSE_F=   83.98 meV / A
+2025-10-03 22:39:45.717 DEBUG: Deleting old checkpoint file: .\checkpoints\MACE_model_run-123_epoch-22.pt
+2025-10-03 22:39:45.719 DEBUG: Saving checkpoint: .\checkpoints\MACE_model_run-123_epoch-23.pt
+2025-10-03 22:40:09.948 INFO: Epoch 24: head: Default, loss=0.08198385, RMSE_E_per_atom=    2.81 meV, RMSE_F=   81.66 meV / A
+2025-10-03 22:40:09.950 DEBUG: Deleting old checkpoint file: .\checkpoints\MACE_model_run-123_epoch-23.pt
+2025-10-03 22:40:09.952 DEBUG: Saving checkpoint: .\checkpoints\MACE_model_run-123_epoch-24.pt
+2025-10-03 22:40:29.824 INFO: Epoch 25: head: Default, loss=0.07795745, RMSE_E_per_atom=    3.43 meV, RMSE_F=   79.59 meV / A
+2025-10-03 22:40:29.827 DEBUG: Deleting old checkpoint file: .\checkpoints\MACE_model_run-123_epoch-24.pt
+2025-10-03 22:40:29.830 DEBUG: Saving checkpoint: .\checkpoints\MACE_model_run-123_epoch-25.pt
+2025-10-03 22:40:51.298 INFO: Epoch 26: head: Default, loss=0.07448275, RMSE_E_per_atom=    2.65 meV, RMSE_F=   77.74 meV / A
+2025-10-03 22:40:51.303 DEBUG: Deleting old checkpoint file: .\checkpoints\MACE_model_run-123_epoch-25.pt
+2025-10-03 22:40:51.306 DEBUG: Saving checkpoint: .\checkpoints\MACE_model_run-123_epoch-26.pt
+2025-10-03 22:41:11.960 INFO: Epoch 27: head: Default, loss=0.07139996, RMSE_E_per_atom=    2.76 meV, RMSE_F=   76.08 meV / A
+2025-10-03 22:41:11.962 DEBUG: Deleting old checkpoint file: .\checkpoints\MACE_model_run-123_epoch-26.pt
+2025-10-03 22:41:11.963 DEBUG: Saving checkpoint: .\checkpoints\MACE_model_run-123_epoch-27.pt
+2025-10-03 22:41:32.325 INFO: Epoch 28: head: Default, loss=0.06880751, RMSE_E_per_atom=    2.73 meV, RMSE_F=   74.62 meV / A
+2025-10-03 22:41:32.330 DEBUG: Deleting old checkpoint file: .\checkpoints\MACE_model_run-123_epoch-27.pt
+2025-10-03 22:41:32.334 DEBUG: Saving checkpoint: .\checkpoints\MACE_model_run-123_epoch-28.pt
+2025-10-03 22:41:59.750 INFO: Epoch 29: head: Default, loss=0.06619371, RMSE_E_per_atom=    2.99 meV, RMSE_F=   73.15 meV / A
+2025-10-03 22:41:59.759 DEBUG: Deleting old checkpoint file: .\checkpoints\MACE_model_run-123_epoch-28.pt
+2025-10-03 22:41:59.761 DEBUG: Saving checkpoint: .\checkpoints\MACE_model_run-123_epoch-29.pt
+2025-10-03 22:42:25.142 INFO: Epoch 30: head: Default, loss=0.06405143, RMSE_E_per_atom=    2.87 meV, RMSE_F=   71.94 meV / A
+2025-10-03 22:42:25.144 DEBUG: Deleting old checkpoint file: .\checkpoints\MACE_model_run-123_epoch-29.pt
+2025-10-03 22:42:25.145 DEBUG: Saving checkpoint: .\checkpoints\MACE_model_run-123_epoch-30.pt
+2025-10-03 22:42:49.150 INFO: Epoch 31: head: Default, loss=0.06210291, RMSE_E_per_atom=    3.00 meV, RMSE_F=   70.80 meV / A
+2025-10-03 22:42:49.153 DEBUG: Deleting old checkpoint file: .\checkpoints\MACE_model_run-123_epoch-30.pt
+2025-10-03 22:42:49.155 DEBUG: Saving checkpoint: .\checkpoints\MACE_model_run-123_epoch-31.pt
+2025-10-03 22:43:12.055 INFO: Epoch 32: head: Default, loss=0.06018887, RMSE_E_per_atom=    3.56 meV, RMSE_F=   69.69 meV / A
+2025-10-03 22:43:12.059 DEBUG: Deleting old checkpoint file: .\checkpoints\MACE_model_run-123_epoch-31.pt
+2025-10-03 22:43:12.061 DEBUG: Saving checkpoint: .\checkpoints\MACE_model_run-123_epoch-32.pt
+2025-10-03 22:43:35.626 INFO: Epoch 33: head: Default, loss=0.05849903, RMSE_E_per_atom=    3.77 meV, RMSE_F=   68.67 meV / A
+2025-10-03 22:43:35.628 DEBUG: Deleting old checkpoint file: .\checkpoints\MACE_model_run-123_epoch-32.pt
+2025-10-03 22:43:35.629 DEBUG: Saving checkpoint: .\checkpoints\MACE_model_run-123_epoch-33.pt
+2025-10-03 22:43:59.627 INFO: Epoch 34: head: Default, loss=0.05684629, RMSE_E_per_atom=    2.49 meV, RMSE_F=   67.68 meV / A
+2025-10-03 22:43:59.630 DEBUG: Deleting old checkpoint file: .\checkpoints\MACE_model_run-123_epoch-33.pt
+2025-10-03 22:43:59.631 DEBUG: Saving checkpoint: .\checkpoints\MACE_model_run-123_epoch-34.pt
+2025-10-03 22:44:22.409 INFO: Epoch 35: head: Default, loss=0.05533555, RMSE_E_per_atom=    2.52 meV, RMSE_F=   66.75 meV / A
+2025-10-03 22:44:22.411 DEBUG: Deleting old checkpoint file: .\checkpoints\MACE_model_run-123_epoch-34.pt
+2025-10-03 22:44:22.413 DEBUG: Saving checkpoint: .\checkpoints\MACE_model_run-123_epoch-35.pt
+2025-10-03 22:44:45.022 INFO: Epoch 36: head: Default, loss=0.05392871, RMSE_E_per_atom=    2.68 meV, RMSE_F=   65.87 meV / A
+2025-10-03 22:44:45.025 DEBUG: Deleting old checkpoint file: .\checkpoints\MACE_model_run-123_epoch-35.pt
+2025-10-03 22:44:45.026 DEBUG: Saving checkpoint: .\checkpoints\MACE_model_run-123_epoch-36.pt
+2025-10-03 22:45:17.484 INFO: Epoch 37: head: Default, loss=0.05260788, RMSE_E_per_atom=    2.32 meV, RMSE_F=   65.05 meV / A
+2025-10-03 22:45:17.487 DEBUG: Deleting old checkpoint file: .\checkpoints\MACE_model_run-123_epoch-36.pt
+2025-10-03 22:45:17.489 DEBUG: Saving checkpoint: .\checkpoints\MACE_model_run-123_epoch-37.pt
+2025-10-03 22:45:50.124 INFO: Epoch 38: head: Default, loss=0.05126097, RMSE_E_per_atom=    1.98 meV, RMSE_F=   64.21 meV / A
+2025-10-03 22:45:50.127 DEBUG: Deleting old checkpoint file: .\checkpoints\MACE_model_run-123_epoch-37.pt
+2025-10-03 22:45:50.128 DEBUG: Saving checkpoint: .\checkpoints\MACE_model_run-123_epoch-38.pt
+2025-10-03 22:46:23.106 INFO: Epoch 39: head: Default, loss=0.05003501, RMSE_E_per_atom=    2.14 meV, RMSE_F=   63.43 meV / A
+2025-10-03 22:46:23.108 DEBUG: Deleting old checkpoint file: .\checkpoints\MACE_model_run-123_epoch-38.pt
+2025-10-03 22:46:23.110 DEBUG: Saving checkpoint: .\checkpoints\MACE_model_run-123_epoch-39.pt
+2025-10-03 22:46:55.013 INFO: Epoch 40: head: Default, loss=0.04879910, RMSE_E_per_atom=    2.01 meV, RMSE_F=   62.64 meV / A
+2025-10-03 22:46:55.016 DEBUG: Deleting old checkpoint file: .\checkpoints\MACE_model_run-123_epoch-39.pt
+2025-10-03 22:46:55.019 DEBUG: Saving checkpoint: .\checkpoints\MACE_model_run-123_epoch-40.pt
+2025-10-03 22:47:23.697 INFO: Epoch 41: head: Default, loss=0.04756360, RMSE_E_per_atom=    2.01 meV, RMSE_F=   61.87 meV / A
+2025-10-03 22:47:23.702 DEBUG: Deleting old checkpoint file: .\checkpoints\MACE_model_run-123_epoch-40.pt
+2025-10-03 22:47:23.705 DEBUG: Saving checkpoint: .\checkpoints\MACE_model_run-123_epoch-41.pt
+2025-10-03 22:47:52.346 INFO: Epoch 42: head: Default, loss=0.04648882, RMSE_E_per_atom=    1.45 meV, RMSE_F=   61.18 meV / A
+2025-10-03 22:47:52.349 DEBUG: Deleting old checkpoint file: .\checkpoints\MACE_model_run-123_epoch-41.pt
+2025-10-03 22:47:52.351 DEBUG: Saving checkpoint: .\checkpoints\MACE_model_run-123_epoch-42.pt
+2025-10-03 22:48:21.253 INFO: Epoch 43: head: Default, loss=0.04551363, RMSE_E_per_atom=    1.47 meV, RMSE_F=   60.54 meV / A
+2025-10-03 22:48:21.256 DEBUG: Deleting old checkpoint file: .\checkpoints\MACE_model_run-123_epoch-42.pt
+2025-10-03 22:48:21.257 DEBUG: Saving checkpoint: .\checkpoints\MACE_model_run-123_epoch-43.pt
+2025-10-03 22:48:50.003 INFO: Epoch 44: head: Default, loss=0.04445494, RMSE_E_per_atom=    1.50 meV, RMSE_F=   59.83 meV / A
+2025-10-03 22:48:50.005 DEBUG: Deleting old checkpoint file: .\checkpoints\MACE_model_run-123_epoch-43.pt
+2025-10-03 22:48:50.006 DEBUG: Saving checkpoint: .\checkpoints\MACE_model_run-123_epoch-44.pt
+2025-10-03 22:49:22.809 INFO: Epoch 45: head: Default, loss=0.04352707, RMSE_E_per_atom=    2.39 meV, RMSE_F=   59.20 meV / A
+2025-10-03 22:49:22.816 DEBUG: Deleting old checkpoint file: .\checkpoints\MACE_model_run-123_epoch-44.pt
+2025-10-03 22:49:22.818 DEBUG: Saving checkpoint: .\checkpoints\MACE_model_run-123_epoch-45.pt
+2025-10-03 22:49:55.718 INFO: Epoch 46: head: Default, loss=0.04272359, RMSE_E_per_atom=    2.78 meV, RMSE_F=   58.66 meV / A
+2025-10-03 22:49:55.721 DEBUG: Deleting old checkpoint file: .\checkpoints\MACE_model_run-123_epoch-45.pt
+2025-10-03 22:49:55.723 DEBUG: Saving checkpoint: .\checkpoints\MACE_model_run-123_epoch-46.pt
+2025-10-03 22:50:29.644 INFO: Epoch 47: head: Default, loss=0.04182218, RMSE_E_per_atom=    1.64 meV, RMSE_F=   58.05 meV / A
+2025-10-03 22:50:29.648 DEBUG: Deleting old checkpoint file: .\checkpoints\MACE_model_run-123_epoch-46.pt
+2025-10-03 22:50:29.650 DEBUG: Saving checkpoint: .\checkpoints\MACE_model_run-123_epoch-47.pt
+2025-10-03 22:50:57.264 INFO: Epoch 48: head: Default, loss=0.04094257, RMSE_E_per_atom=    1.49 meV, RMSE_F=   57.47 meV / A
+2025-10-03 22:50:57.268 DEBUG: Deleting old checkpoint file: .\checkpoints\MACE_model_run-123_epoch-47.pt
+2025-10-03 22:50:57.271 DEBUG: Saving checkpoint: .\checkpoints\MACE_model_run-123_epoch-48.pt
+2025-10-03 22:51:18.837 INFO: Epoch 49: head: Default, loss=0.04016221, RMSE_E_per_atom=    1.11 meV, RMSE_F=   56.92 meV / A
+2025-10-03 22:51:18.841 DEBUG: Deleting old checkpoint file: .\checkpoints\MACE_model_run-123_epoch-48.pt
+2025-10-03 22:51:18.843 DEBUG: Saving checkpoint: .\checkpoints\MACE_model_run-123_epoch-49.pt
+2025-10-03 22:51:39.842 INFO: Epoch 50: head: Default, loss=0.03941059, RMSE_E_per_atom=    1.08 meV, RMSE_F=   56.42 meV / A
+2025-10-03 22:51:39.845 DEBUG: Deleting old checkpoint file: .\checkpoints\MACE_model_run-123_epoch-49.pt
+2025-10-03 22:51:39.847 DEBUG: Saving checkpoint: .\checkpoints\MACE_model_run-123_epoch-50.pt
+2025-10-03 22:52:01.130 INFO: Epoch 51: head: Default, loss=0.03868859, RMSE_E_per_atom=    1.04 meV, RMSE_F=   55.91 meV / A
+2025-10-03 22:52:01.133 DEBUG: Deleting old checkpoint file: .\checkpoints\MACE_model_run-123_epoch-50.pt
+2025-10-03 22:52:01.135 DEBUG: Saving checkpoint: .\checkpoints\MACE_model_run-123_epoch-51.pt
+2025-10-03 22:52:22.568 INFO: Epoch 52: head: Default, loss=0.03791878, RMSE_E_per_atom=    1.10 meV, RMSE_F=   55.37 meV / A
+2025-10-03 22:52:22.571 DEBUG: Deleting old checkpoint file: .\checkpoints\MACE_model_run-123_epoch-51.pt
+2025-10-03 22:52:22.572 DEBUG: Saving checkpoint: .\checkpoints\MACE_model_run-123_epoch-52.pt
+2025-10-03 22:52:43.025 INFO: Epoch 53: head: Default, loss=0.03726582, RMSE_E_per_atom=    1.03 meV, RMSE_F=   54.91 meV / A
+2025-10-03 22:52:43.028 DEBUG: Deleting old checkpoint file: .\checkpoints\MACE_model_run-123_epoch-52.pt
+2025-10-03 22:52:43.030 DEBUG: Saving checkpoint: .\checkpoints\MACE_model_run-123_epoch-53.pt
+2025-10-03 22:53:03.514 INFO: Epoch 54: head: Default, loss=0.03656475, RMSE_E_per_atom=    1.07 meV, RMSE_F=   54.40 meV / A
+2025-10-03 22:53:03.517 DEBUG: Deleting old checkpoint file: .\checkpoints\MACE_model_run-123_epoch-53.pt
+2025-10-03 22:53:03.519 DEBUG: Saving checkpoint: .\checkpoints\MACE_model_run-123_epoch-54.pt
+2025-10-03 22:53:25.561 INFO: Epoch 55: head: Default, loss=0.03601090, RMSE_E_per_atom=    0.98 meV, RMSE_F=   53.99 meV / A
+2025-10-03 22:53:25.565 DEBUG: Deleting old checkpoint file: .\checkpoints\MACE_model_run-123_epoch-54.pt
+2025-10-03 22:53:25.567 DEBUG: Saving checkpoint: .\checkpoints\MACE_model_run-123_epoch-55.pt
+2025-10-03 22:53:49.394 INFO: Epoch 56: head: Default, loss=0.03547078, RMSE_E_per_atom=    0.97 meV, RMSE_F=   53.60 meV / A
+2025-10-03 22:53:49.396 DEBUG: Deleting old checkpoint file: .\checkpoints\MACE_model_run-123_epoch-55.pt
+2025-10-03 22:53:49.397 DEBUG: Saving checkpoint: .\checkpoints\MACE_model_run-123_epoch-56.pt
+2025-10-03 22:54:10.773 INFO: Epoch 57: head: Default, loss=0.03488726, RMSE_E_per_atom=    0.96 meV, RMSE_F=   53.17 meV / A
+2025-10-03 22:54:10.776 DEBUG: Deleting old checkpoint file: .\checkpoints\MACE_model_run-123_epoch-56.pt
+2025-10-03 22:54:10.779 DEBUG: Saving checkpoint: .\checkpoints\MACE_model_run-123_epoch-57.pt
+2025-10-03 22:54:38.736 INFO: Epoch 58: head: Default, loss=0.03434055, RMSE_E_per_atom=    1.09 meV, RMSE_F=   52.78 meV / A
+2025-10-03 22:54:38.738 DEBUG: Deleting old checkpoint file: .\checkpoints\MACE_model_run-123_epoch-57.pt
+2025-10-03 22:54:38.740 DEBUG: Saving checkpoint: .\checkpoints\MACE_model_run-123_epoch-58.pt
+2025-10-03 22:55:11.237 INFO: Epoch 59: head: Default, loss=0.03382200, RMSE_E_per_atom=    1.44 meV, RMSE_F=   52.40 meV / A
+2025-10-03 22:55:11.240 DEBUG: Deleting old checkpoint file: .\checkpoints\MACE_model_run-123_epoch-58.pt
+2025-10-03 22:55:11.243 DEBUG: Saving checkpoint: .\checkpoints\MACE_model_run-123_epoch-59.pt
+2025-10-03 22:55:40.742 INFO: Epoch 60: head: Default, loss=0.03331260, RMSE_E_per_atom=    1.36 meV, RMSE_F=   52.03 meV / A
+2025-10-03 22:55:40.745 DEBUG: Deleting old checkpoint file: .\checkpoints\MACE_model_run-123_epoch-59.pt
+2025-10-03 22:55:40.747 DEBUG: Saving checkpoint: .\checkpoints\MACE_model_run-123_epoch-60.pt
+2025-10-03 22:56:08.244 INFO: Epoch 61: head: Default, loss=0.03284226, RMSE_E_per_atom=    0.87 meV, RMSE_F=   51.68 meV / A
+2025-10-03 22:56:08.249 DEBUG: Deleting old checkpoint file: .\checkpoints\MACE_model_run-123_epoch-60.pt
+2025-10-03 22:56:08.252 DEBUG: Saving checkpoint: .\checkpoints\MACE_model_run-123_epoch-61.pt
+2025-10-03 22:56:37.924 INFO: Epoch 62: head: Default, loss=0.03234896, RMSE_E_per_atom=    0.84 meV, RMSE_F=   51.31 meV / A
+2025-10-03 22:56:37.926 DEBUG: Deleting old checkpoint file: .\checkpoints\MACE_model_run-123_epoch-61.pt
+2025-10-03 22:56:37.929 DEBUG: Saving checkpoint: .\checkpoints\MACE_model_run-123_epoch-62.pt
+2025-10-03 22:57:08.897 INFO: Epoch 63: head: Default, loss=0.03192820, RMSE_E_per_atom=    0.84 meV, RMSE_F=   50.97 meV / A
+2025-10-03 22:57:08.902 DEBUG: Deleting old checkpoint file: .\checkpoints\MACE_model_run-123_epoch-62.pt
+2025-10-03 22:57:08.905 DEBUG: Saving checkpoint: .\checkpoints\MACE_model_run-123_epoch-63.pt
+2025-10-03 22:57:42.713 INFO: Epoch 64: head: Default, loss=0.03156398, RMSE_E_per_atom=    0.81 meV, RMSE_F=   50.69 meV / A
+2025-10-03 22:57:42.716 DEBUG: Deleting old checkpoint file: .\checkpoints\MACE_model_run-123_epoch-63.pt
+2025-10-03 22:57:42.718 DEBUG: Saving checkpoint: .\checkpoints\MACE_model_run-123_epoch-64.pt
+2025-10-03 22:58:12.871 INFO: Epoch 65: head: Default, loss=0.03117628, RMSE_E_per_atom=    0.84 meV, RMSE_F=   50.39 meV / A
+2025-10-03 22:58:12.873 DEBUG: Deleting old checkpoint file: .\checkpoints\MACE_model_run-123_epoch-64.pt
+2025-10-03 22:58:12.875 DEBUG: Saving checkpoint: .\checkpoints\MACE_model_run-123_epoch-65.pt
+2025-10-03 22:58:35.759 INFO: Epoch 66: head: Default, loss=0.03074886, RMSE_E_per_atom=    0.80 meV, RMSE_F=   50.05 meV / A
+2025-10-03 22:58:35.760 DEBUG: Deleting old checkpoint file: .\checkpoints\MACE_model_run-123_epoch-65.pt
+2025-10-03 22:58:35.762 DEBUG: Saving checkpoint: .\checkpoints\MACE_model_run-123_epoch-66.pt
+2025-10-03 22:58:57.559 INFO: Epoch 67: head: Default, loss=0.03028668, RMSE_E_per_atom=    0.80 meV, RMSE_F=   49.69 meV / A
+2025-10-03 22:58:57.563 DEBUG: Deleting old checkpoint file: .\checkpoints\MACE_model_run-123_epoch-66.pt
+2025-10-03 22:58:57.564 DEBUG: Saving checkpoint: .\checkpoints\MACE_model_run-123_epoch-67.pt
+2025-10-03 22:59:17.827 INFO: Epoch 68: head: Default, loss=0.02997257, RMSE_E_per_atom=    0.77 meV, RMSE_F=   49.44 meV / A
+2025-10-03 22:59:17.830 DEBUG: Deleting old checkpoint file: .\checkpoints\MACE_model_run-123_epoch-67.pt
+2025-10-03 22:59:17.832 DEBUG: Saving checkpoint: .\checkpoints\MACE_model_run-123_epoch-68.pt
+2025-10-03 22:59:38.575 INFO: Epoch 69: head: Default, loss=0.02961831, RMSE_E_per_atom=    0.73 meV, RMSE_F=   49.17 meV / A
+2025-10-03 22:59:38.579 DEBUG: Deleting old checkpoint file: .\checkpoints\MACE_model_run-123_epoch-68.pt
+2025-10-03 22:59:38.581 DEBUG: Saving checkpoint: .\checkpoints\MACE_model_run-123_epoch-69.pt
+2025-10-03 22:59:59.301 INFO: Epoch 70: head: Default, loss=0.02919373, RMSE_E_per_atom=    0.74 meV, RMSE_F=   48.84 meV / A
+2025-10-03 22:59:59.303 DEBUG: Deleting old checkpoint file: .\checkpoints\MACE_model_run-123_epoch-69.pt
+2025-10-03 22:59:59.305 DEBUG: Saving checkpoint: .\checkpoints\MACE_model_run-123_epoch-70.pt
+2025-10-03 23:00:19.662 INFO: Epoch 71: head: Default, loss=0.02880926, RMSE_E_per_atom=    0.72 meV, RMSE_F=   48.53 meV / A
+2025-10-03 23:00:19.667 DEBUG: Deleting old checkpoint file: .\checkpoints\MACE_model_run-123_epoch-70.pt
+2025-10-03 23:00:19.669 DEBUG: Saving checkpoint: .\checkpoints\MACE_model_run-123_epoch-71.pt
+2025-10-03 23:00:40.305 INFO: Epoch 72: head: Default, loss=0.02847601, RMSE_E_per_atom=    0.96 meV, RMSE_F=   48.26 meV / A
+2025-10-03 23:00:40.308 DEBUG: Deleting old checkpoint file: .\checkpoints\MACE_model_run-123_epoch-71.pt
+2025-10-03 23:00:40.309 DEBUG: Saving checkpoint: .\checkpoints\MACE_model_run-123_epoch-72.pt
+2025-10-03 23:01:01.115 INFO: Epoch 73: head: Default, loss=0.02819841, RMSE_E_per_atom=    0.85 meV, RMSE_F=   48.03 meV / A
+2025-10-03 23:01:01.118 DEBUG: Deleting old checkpoint file: .\checkpoints\MACE_model_run-123_epoch-72.pt
+2025-10-03 23:01:01.120 DEBUG: Saving checkpoint: .\checkpoints\MACE_model_run-123_epoch-73.pt
+2025-10-03 23:01:22.386 INFO: Epoch 74: head: Default, loss=0.02786394, RMSE_E_per_atom=    0.70 meV, RMSE_F=   47.76 meV / A
+2025-10-03 23:01:22.389 DEBUG: Deleting old checkpoint file: .\checkpoints\MACE_model_run-123_epoch-73.pt
+2025-10-03 23:01:22.390 DEBUG: Saving checkpoint: .\checkpoints\MACE_model_run-123_epoch-74.pt
+2025-10-03 23:01:22.413 INFO: Changing loss based on Stage Two Weights
+2025-10-03 23:01:43.303 INFO: Epoch 75: head: Default, loss=0.02768858, RMSE_E_per_atom=    0.69 meV, RMSE_F=   47.57 meV / A
+2025-10-03 23:01:43.306 DEBUG: Saving checkpoint: .\checkpoints\MACE_model_run-123_epoch-75_swa.pt
+2025-10-03 23:02:07.405 INFO: Epoch 76: head: Default, loss=0.02746530, RMSE_E_per_atom=    0.68 meV, RMSE_F=   47.38 meV / A
+2025-10-03 23:02:07.408 DEBUG: Deleting old checkpoint file: .\checkpoints\MACE_model_run-123_epoch-75_swa.pt
+2025-10-03 23:02:07.410 DEBUG: Saving checkpoint: .\checkpoints\MACE_model_run-123_epoch-76_swa.pt
+2025-10-03 23:02:31.644 INFO: Epoch 77: head: Default, loss=0.02728967, RMSE_E_per_atom=    0.68 meV, RMSE_F=   47.23 meV / A
+2025-10-03 23:02:31.647 DEBUG: Deleting old checkpoint file: .\checkpoints\MACE_model_run-123_epoch-76_swa.pt
+2025-10-03 23:02:31.649 DEBUG: Saving checkpoint: .\checkpoints\MACE_model_run-123_epoch-77_swa.pt
+2025-10-03 23:02:55.559 INFO: Epoch 78: head: Default, loss=0.02715305, RMSE_E_per_atom=    0.67 meV, RMSE_F=   47.11 meV / A
+2025-10-03 23:02:55.563 DEBUG: Deleting old checkpoint file: .\checkpoints\MACE_model_run-123_epoch-77_swa.pt
+2025-10-03 23:02:55.565 DEBUG: Saving checkpoint: .\checkpoints\MACE_model_run-123_epoch-78_swa.pt
+2025-10-03 23:03:19.322 INFO: Epoch 79: head: Default, loss=0.02700683, RMSE_E_per_atom=    0.66 meV, RMSE_F=   46.99 meV / A
+2025-10-03 23:03:19.325 DEBUG: Deleting old checkpoint file: .\checkpoints\MACE_model_run-123_epoch-78_swa.pt
+2025-10-03 23:03:19.328 DEBUG: Saving checkpoint: .\checkpoints\MACE_model_run-123_epoch-79_swa.pt
+2025-10-03 23:03:43.895 INFO: Epoch 80: head: Default, loss=0.02689996, RMSE_E_per_atom=    0.66 meV, RMSE_F=   46.90 meV / A
+2025-10-03 23:03:43.897 DEBUG: Deleting old checkpoint file: .\checkpoints\MACE_model_run-123_epoch-79_swa.pt
+2025-10-03 23:03:43.899 DEBUG: Saving checkpoint: .\checkpoints\MACE_model_run-123_epoch-80_swa.pt
+2025-10-03 23:04:08.082 INFO: Epoch 81: head: Default, loss=0.02680106, RMSE_E_per_atom=    0.65 meV, RMSE_F=   46.82 meV / A
+2025-10-03 23:04:08.084 DEBUG: Deleting old checkpoint file: .\checkpoints\MACE_model_run-123_epoch-80_swa.pt
+2025-10-03 23:04:08.086 DEBUG: Saving checkpoint: .\checkpoints\MACE_model_run-123_epoch-81_swa.pt
+2025-10-03 23:04:30.140 INFO: Epoch 82: head: Default, loss=0.02672356, RMSE_E_per_atom=    0.65 meV, RMSE_F=   46.75 meV / A
+2025-10-03 23:04:30.143 DEBUG: Deleting old checkpoint file: .\checkpoints\MACE_model_run-123_epoch-81_swa.pt
+2025-10-03 23:04:30.145 DEBUG: Saving checkpoint: .\checkpoints\MACE_model_run-123_epoch-82_swa.pt
+2025-10-03 23:04:51.428 INFO: Epoch 83: head: Default, loss=0.02663372, RMSE_E_per_atom=    0.64 meV, RMSE_F=   46.68 meV / A
+2025-10-03 23:04:51.430 DEBUG: Deleting old checkpoint file: .\checkpoints\MACE_model_run-123_epoch-82_swa.pt
+2025-10-03 23:04:51.431 DEBUG: Saving checkpoint: .\checkpoints\MACE_model_run-123_epoch-83_swa.pt
+2025-10-03 23:05:12.078 INFO: Epoch 84: head: Default, loss=0.02655688, RMSE_E_per_atom=    0.63 meV, RMSE_F=   46.62 meV / A
+2025-10-03 23:05:12.082 DEBUG: Deleting old checkpoint file: .\checkpoints\MACE_model_run-123_epoch-83_swa.pt
+2025-10-03 23:05:12.083 DEBUG: Saving checkpoint: .\checkpoints\MACE_model_run-123_epoch-84_swa.pt
+2025-10-03 23:05:33.706 INFO: Epoch 85: head: Default, loss=0.02651149, RMSE_E_per_atom=    0.63 meV, RMSE_F=   46.57 meV / A
+2025-10-03 23:05:33.708 DEBUG: Deleting old checkpoint file: .\checkpoints\MACE_model_run-123_epoch-84_swa.pt
+2025-10-03 23:05:33.709 DEBUG: Saving checkpoint: .\checkpoints\MACE_model_run-123_epoch-85_swa.pt
+2025-10-03 23:05:54.166 INFO: Epoch 86: head: Default, loss=0.02644187, RMSE_E_per_atom=    0.62 meV, RMSE_F=   46.52 meV / A
+2025-10-03 23:05:54.169 DEBUG: Deleting old checkpoint file: .\checkpoints\MACE_model_run-123_epoch-85_swa.pt
+2025-10-03 23:05:54.170 DEBUG: Saving checkpoint: .\checkpoints\MACE_model_run-123_epoch-86_swa.pt
+2025-10-03 23:06:15.982 INFO: Epoch 87: head: Default, loss=0.02637997, RMSE_E_per_atom=    0.62 meV, RMSE_F=   46.47 meV / A
+2025-10-03 23:06:15.986 DEBUG: Deleting old checkpoint file: .\checkpoints\MACE_model_run-123_epoch-86_swa.pt
+2025-10-03 23:06:15.989 DEBUG: Saving checkpoint: .\checkpoints\MACE_model_run-123_epoch-87_swa.pt
+2025-10-03 23:06:37.810 INFO: Epoch 88: head: Default, loss=0.02633350, RMSE_E_per_atom=    0.62 meV, RMSE_F=   46.43 meV / A
+2025-10-03 23:06:37.811 DEBUG: Deleting old checkpoint file: .\checkpoints\MACE_model_run-123_epoch-87_swa.pt
+2025-10-03 23:06:37.812 DEBUG: Saving checkpoint: .\checkpoints\MACE_model_run-123_epoch-88_swa.pt
+2025-10-03 23:06:59.599 INFO: Epoch 89: head: Default, loss=0.02626831, RMSE_E_per_atom=    0.62 meV, RMSE_F=   46.37 meV / A
+2025-10-03 23:06:59.601 DEBUG: Deleting old checkpoint file: .\checkpoints\MACE_model_run-123_epoch-88_swa.pt
+2025-10-03 23:06:59.602 DEBUG: Saving checkpoint: .\checkpoints\MACE_model_run-123_epoch-89_swa.pt
+2025-10-03 23:07:21.204 INFO: Epoch 90: head: Default, loss=0.02623332, RMSE_E_per_atom=    0.62 meV, RMSE_F=   46.34 meV / A
+2025-10-03 23:07:21.207 DEBUG: Deleting old checkpoint file: .\checkpoints\MACE_model_run-123_epoch-89_swa.pt
+2025-10-03 23:07:21.208 DEBUG: Saving checkpoint: .\checkpoints\MACE_model_run-123_epoch-90_swa.pt
+2025-10-03 23:07:42.265 INFO: Epoch 91: head: Default, loss=0.02619535, RMSE_E_per_atom=    0.62 meV, RMSE_F=   46.31 meV / A
+2025-10-03 23:07:42.268 DEBUG: Deleting old checkpoint file: .\checkpoints\MACE_model_run-123_epoch-90_swa.pt
+2025-10-03 23:07:42.269 DEBUG: Saving checkpoint: .\checkpoints\MACE_model_run-123_epoch-91_swa.pt
+2025-10-03 23:08:03.559 INFO: Epoch 92: head: Default, loss=0.02615589, RMSE_E_per_atom=    0.62 meV, RMSE_F=   46.27 meV / A
+2025-10-03 23:08:03.562 DEBUG: Deleting old checkpoint file: .\checkpoints\MACE_model_run-123_epoch-91_swa.pt
+2025-10-03 23:08:03.562 DEBUG: Saving checkpoint: .\checkpoints\MACE_model_run-123_epoch-92_swa.pt
+2025-10-03 23:08:24.748 INFO: Epoch 93: head: Default, loss=0.02610404, RMSE_E_per_atom=    0.61 meV, RMSE_F=   46.23 meV / A
+2025-10-03 23:08:24.751 DEBUG: Deleting old checkpoint file: .\checkpoints\MACE_model_run-123_epoch-92_swa.pt
+2025-10-03 23:08:24.753 DEBUG: Saving checkpoint: .\checkpoints\MACE_model_run-123_epoch-93_swa.pt
+2025-10-03 23:08:45.948 INFO: Epoch 94: head: Default, loss=0.02605728, RMSE_E_per_atom=    0.61 meV, RMSE_F=   46.19 meV / A
+2025-10-03 23:08:45.952 DEBUG: Deleting old checkpoint file: .\checkpoints\MACE_model_run-123_epoch-93_swa.pt
+2025-10-03 23:08:45.954 DEBUG: Saving checkpoint: .\checkpoints\MACE_model_run-123_epoch-94_swa.pt
+2025-10-03 23:09:09.129 INFO: Epoch 95: head: Default, loss=0.02604912, RMSE_E_per_atom=    0.61 meV, RMSE_F=   46.18 meV / A
+2025-10-03 23:09:09.135 DEBUG: Deleting old checkpoint file: .\checkpoints\MACE_model_run-123_epoch-94_swa.pt
+2025-10-03 23:09:09.137 DEBUG: Saving checkpoint: .\checkpoints\MACE_model_run-123_epoch-95_swa.pt
+2025-10-03 23:09:29.377 INFO: Epoch 96: head: Default, loss=0.02600135, RMSE_E_per_atom=    0.61 meV, RMSE_F=   46.14 meV / A
+2025-10-03 23:09:29.380 DEBUG: Deleting old checkpoint file: .\checkpoints\MACE_model_run-123_epoch-95_swa.pt
+2025-10-03 23:09:29.382 DEBUG: Saving checkpoint: .\checkpoints\MACE_model_run-123_epoch-96_swa.pt
+2025-10-03 23:09:50.678 INFO: Epoch 97: head: Default, loss=0.02596200, RMSE_E_per_atom=    0.61 meV, RMSE_F=   46.11 meV / A
+2025-10-03 23:09:50.684 DEBUG: Deleting old checkpoint file: .\checkpoints\MACE_model_run-123_epoch-96_swa.pt
+2025-10-03 23:09:50.688 DEBUG: Saving checkpoint: .\checkpoints\MACE_model_run-123_epoch-97_swa.pt
+2025-10-03 23:10:12.237 INFO: Epoch 98: head: Default, loss=0.02593729, RMSE_E_per_atom=    0.60 meV, RMSE_F=   46.09 meV / A
+2025-10-03 23:10:12.240 DEBUG: Deleting old checkpoint file: .\checkpoints\MACE_model_run-123_epoch-97_swa.pt
+2025-10-03 23:10:12.242 DEBUG: Saving checkpoint: .\checkpoints\MACE_model_run-123_epoch-98_swa.pt
+2025-10-03 23:10:33.098 INFO: Epoch 99: head: Default, loss=0.02587882, RMSE_E_per_atom=    0.60 meV, RMSE_F=   46.04 meV / A
+2025-10-03 23:10:33.100 DEBUG: Deleting old checkpoint file: .\checkpoints\MACE_model_run-123_epoch-98_swa.pt
+2025-10-03 23:10:33.102 DEBUG: Saving checkpoint: .\checkpoints\MACE_model_run-123_epoch-99_swa.pt
+2025-10-03 23:10:33.152 INFO: Training complete
+2025-10-03 23:10:33.152 INFO: 
+2025-10-03 23:10:33.153 INFO: ===========RESULTS===========
+2025-10-03 23:10:36.316 INFO: Loading checkpoint: .\checkpoints\MACE_model_run-123_epoch-74.pt
+2025-10-03 23:10:36.338 INFO: Loaded Stage one model from epoch 74 for evaluation
+2025-10-03 23:10:36.338 INFO: Saving model to checkpoints\MACE_model_run-123.model
+2025-10-03 23:10:36.665 INFO: Compiling model, saving metadata to MACE_model_compiled.model
+2025-10-03 23:10:37.838 INFO: Computing metrics for training, validation, and test sets
+2025-10-03 23:10:37.840 INFO: Skipping evaluation for heads: ['pt_head']
+2025-10-03 23:10:37.840 INFO: Evaluating train_Default ...
+2025-10-03 23:10:44.566 INFO: Evaluating valid_Default ...
+2025-10-03 23:10:45.216 INFO: Error-table on TRAIN and VALID:
++---------------+---------------------+------------------+-------------------+
+|  config_type  | RMSE E / meV / atom | RMSE F / meV / A | relative F RMSE % |
++---------------+---------------------+------------------+-------------------+
+| train_Default |            0.9      |         46.0     |          4.87     |
+| valid_Default |            0.7      |         47.8     |          4.89     |
++---------------+---------------------+------------------+-------------------+
+2025-10-03 23:10:45.217 INFO: Evaluating Default_Default ...
+2025-10-03 23:11:20.408 INFO: Error-table on TEST:
++-----------------+---------------------+------------------+-------------------+
+|   config_type   | RMSE E / meV / atom | RMSE F / meV / A | relative F RMSE % |
++-----------------+---------------------+------------------+-------------------+
+| Default_Default |            0.9      |         49.4     |          5.14     |
++-----------------+---------------------+------------------+-------------------+
+2025-10-03 23:11:20.409 DEBUG: Running inference on train_Default dataset
+2025-10-03 23:11:20.738 DEBUG: Plotting failed: too many indices for tensor of dimension 1
+2025-10-03 23:11:20.740 INFO: Loading checkpoint: .\checkpoints\MACE_model_run-123_epoch-99_swa.pt
+2025-10-03 23:11:20.772 INFO: Loaded Stage two model from epoch 99 for evaluation
+2025-10-03 23:11:20.773 INFO: Saving model to checkpoints\MACE_model_run-123_stagetwo.model
+2025-10-03 23:11:21.188 INFO: Compiling model, saving metadata MACE_model_stagetwo_compiled.model
+2025-10-03 23:11:22.666 INFO: Computing metrics for training, validation, and test sets
+2025-10-03 23:11:22.666 INFO: Skipping evaluation for heads: ['pt_head']
+2025-10-03 23:11:22.666 INFO: Evaluating train_Default ...
+2025-10-03 23:11:28.550 INFO: Evaluating valid_Default ...
+2025-10-03 23:11:29.035 INFO: Error-table on TRAIN and VALID:
++---------------+---------------------+------------------+-------------------+
+|  config_type  | RMSE E / meV / atom | RMSE F / meV / A | relative F RMSE % |
++---------------+---------------------+------------------+-------------------+
+| train_Default |            0.8      |         44.3     |          4.68     |
+| valid_Default |            0.6      |         46.0     |          4.71     |
++---------------+---------------------+------------------+-------------------+
+2025-10-03 23:11:29.035 INFO: Evaluating Default_Default ...
+2025-10-03 23:12:03.207 INFO: Error-table on TEST:
++-----------------+---------------------+------------------+-------------------+
+|   config_type   | RMSE E / meV / atom | RMSE F / meV / A | relative F RMSE % |
++-----------------+---------------------+------------------+-------------------+
+| Default_Default |            0.8      |         47.7     |          4.96     |
++-----------------+---------------------+------------------+-------------------+
+2025-10-03 23:12:03.209 DEBUG: Running inference on train_Default dataset
+2025-10-03 23:12:03.496 DEBUG: Plotting failed: too many indices for tensor of dimension 1
+2025-10-03 23:12:03.496 INFO: Done
+2025-10-03 23:16:52.931 INFO: ===========VERIFYING SETTINGS===========
+2025-10-03 23:16:52.933 INFO: MACE version: 0.3.14
+2025-10-03 23:16:52.934 DEBUG: Configuration: Namespace(config='config_mace_3bpa.yml', name='MACE_model', seed=123, work_dir='.', log_dir='.\\logs', model_dir='.', checkpoints_dir='.\\checkpoints', results_dir='.\\results', downloads_dir='.\\downloads', device='cpu', default_dtype='float32', distributed=False, launcher='slurm', log_level='INFO', plot=True, plot_frequency=0, plot_interaction_e=False, error_table='PerAtomRMSE', model='ScaleShiftMACE', r_max=4.0, radial_type='bessel', num_radial_basis=8, num_cutoff_basis=5, pair_repulsion=False, distance_transform='None', apply_cutoff=True, use_last_readout_only=False, use_embedding_readout=False, interaction='RealAgnosticResidualInteractionBlock', interaction_first='RealAgnosticResidualInteractionBlock', max_ell=3, correlation=3, use_reduced_cg=False, use_so3=False, use_agnostic_product=False, num_interactions=2, MLP_irreps='16x0e', radial_MLP='[64, 64, 64]', hidden_irreps='32x0e', edge_irreps=None, num_channels=32, max_L=0, gate='silu', scaling='rms_forces_scaling', avg_num_neighbors=1, compute_avg_num_neighbors=True, compute_stress=False, compute_forces=True, compute_polarizability=<function str2bool at 0x000002BB7032CD60>, compute_atomic_dipole=<function str2bool at 0x000002BB7032CD60>, train_file='BOTNet-datasets/dataset_3BPA/train_300K.xyz', valid_file=None, valid_fraction=0.05, test_file='BOTNet-datasets/dataset_3BPA/test_300K.xyz', test_dir=None, multi_processed_test=False, num_workers=0, pin_memory=True, atomic_numbers=None, mean=None, std=None, statistics_file=None, les_arguments=None, E0s='{1: -13.663181292231226, 6: -1029.2809654211628, 7: -1484.1187695035828, 8: -2042.0330099956639}', pseudolabel_replay=False, foundation_filter_elements=True, heads=None, multiheads_finetuning=True, foundation_head=None, weight_pt_head=1.0, real_pt_data_ratio_threshold=0.1, num_samples_pt=10000, force_mh_ft_lr=False, subselect_pt='random', filter_type_pt='none', allow_random_padding_pt=True, pt_train_file=None, pt_valid_file=None, foundation_model_elements=False, keep_isolated_atoms=False, energy_key='energy', forces_key='forces', virials_key='REF_virials', stress_key='REF_stress', dipole_key='dipole', polarizability_key='polarizability', head_key='head', charges_key='REF_charges', elec_temp_key='elec_temp', total_spin_key='total_spin', total_charge_key='total_charge', embedding_specs=None, skip_evaluate_heads='pt_head', loss='weighted', forces_weight=100.0, swa_forces_weight=100.0, energy_weight=1.0, swa_energy_weight=1000.0, virials_weight=1.0, swa_virials_weight=10.0, stress_weight=1.0, swa_stress_weight=10.0, dipole_weight=1.0, swa_dipole_weight=1.0, swa_polarizability_weight=1.0, polarizability_weight=1.0, config_type_weights='{"Default":1.0}', huber_delta=0.01, optimizer='adam', beta=0.9, batch_size=20, valid_batch_size=10, lr=0.01, swa_lr=0.001, weight_decay=5e-07, amsgrad=True, scheduler='ReduceLROnPlateau', lr_factor=0.8, scheduler_patience=50, lr_scheduler_gamma=0.9993, swa=True, start_swa=3, lbfgs=False, ema=True, ema_decay=0.99, max_num_epochs=5, patience=2048, foundation_model=None, foundation_model_readout=True, eval_interval=1, keep_checkpoints=False, save_all_checkpoints=False, restart_latest=False, save_cpu=False, clip_grad=10.0, dry_run=False, enable_cueq=False, only_cueq=False, enable_oeq=False, wandb=False, wandb_dir=None, wandb_project='', wandb_entity='', wandb_name='', wandb_log_hypers=['num_channels', 'max_L', 'correlation', 'lr', 'swa_lr', 'weight_decay', 'batch_size', 'max_num_epochs', 'start_swa', 'energy_weight', 'forces_weight'], key_specification=KeySpecification(info_keys={'energy': 'energy', 'stress': 'REF_stress', 'virials': 'REF_virials', 'dipole': 'dipole', 'head': 'head', 'elec_temp': 'elec_temp', 'total_charge': 'total_charge', 'polarizability': 'polarizability', 'total_spin': 'total_spin'}, arrays_keys={'forces': 'forces', 'charges': 'REF_charges'}))
+2025-10-03 23:16:52.934 INFO: Using CPU
+2025-10-03 23:16:53.009 DEBUG: Popen(['git', 'version'], cwd=c:\Users\shann\OneDrive\Desktop\Maestria\ML_calc\Test, stdin=None, shell=False, universal_newlines=False)
+2025-10-03 23:16:53.114 DEBUG: Popen(['git', 'version'], cwd=c:\Users\shann\OneDrive\Desktop\Maestria\ML_calc\Test, stdin=None, shell=False, universal_newlines=False)
+2025-10-03 23:16:53.214 DEBUG: sys.platform='win32', git_executable='git'
+2025-10-03 23:16:53.220 DEBUG: Error accessing Git repository: c:\Users\shann\OneDrive\Desktop\Maestria\ML_calc\Test
+2025-10-03 23:16:53.220 INFO: ===========LOADING INPUT DATA===========
+2025-10-03 23:16:53.224 INFO: Using heads: ['Default']
+2025-10-03 23:16:53.228 INFO: Using the key specifications to parse data:
+2025-10-03 23:16:53.230 INFO: Default: KeySpecification(info_keys={'energy': 'energy', 'stress': 'REF_stress', 'virials': 'REF_virials', 'dipole': 'dipole', 'head': 'head', 'elec_temp': 'elec_temp', 'total_charge': 'total_charge', 'polarizability': 'polarizability', 'total_spin': 'total_spin'}, arrays_keys={'forces': 'forces', 'charges': 'REF_charges'})
+2025-10-03 23:16:53.233 INFO: =============    Processing head Default     ===========
+2025-10-03 23:16:53.237 DEBUG: Loading training file: BOTNet-datasets/dataset_3BPA/train_300K.xyz
+2025-10-03 23:16:53.550 WARNING: Since ASE version 3.23.0b1, using energy_key 'energy' is no longer safe when communicating between MACE and ASE. We recommend using a different key, rewriting 'energy' to 'REF_energy'. You need to use --energy_key='REF_energy' to specify the chosen key name.
+2025-10-03 23:16:53.765 WARNING: Since ASE version 3.23.0b1, using forces_key 'forces' is no longer safe when communicating between MACE and ASE. We recommend using a different key, rewriting 'forces' to 'REF_forces'. You need to use --forces_key='REF_forces' to specify the chosen key name.
+2025-10-03 23:16:53.882 INFO: Training set 1/1 [energy: 500, stress: 0, virials: 0, dipole components: 0, head: 500, elec_temp: 0, total_charge: 0, polarizability: 0, total_spin: 0, forces: 500, charges: 0]
+2025-10-03 23:16:53.886 INFO: Total Training set [energy: 500, stress: 0, virials: 0, dipole components: 0, head: 500, elec_temp: 0, total_charge: 0, polarizability: 0, total_spin: 0, forces: 500, charges: 0]
+2025-10-03 23:16:53.888 INFO: No validation set provided, splitting training data instead.
+2025-10-03 23:16:53.896 INFO: Using random 5% of training set for validation with indices saved in: ./valid_indices_123.txt
+2025-10-03 23:16:53.905 INFO: Random Split Training set [energy: 475, stress: 0, virials: 0, dipole components: 0, head: 475, elec_temp: 0, total_charge: 0, polarizability: 0, total_spin: 0, forces: 475, charges: 0]
+2025-10-03 23:16:53.907 INFO: Random Split Validation set [energy: 25, stress: 0, virials: 0, dipole components: 0, head: 25, elec_temp: 0, total_charge: 0, polarizability: 0, total_spin: 0, forces: 25, charges: 0]
+2025-10-03 23:16:55.167 WARNING: Since ASE version 3.23.0b1, using energy_key 'energy' is no longer safe when communicating between MACE and ASE. We recommend using a different key, rewriting 'energy' to 'REF_energy'. You need to use --energy_key='REF_energy' to specify the chosen key name.
+2025-10-03 23:16:55.580 WARNING: Since ASE version 3.23.0b1, using forces_key 'forces' is no longer safe when communicating between MACE and ASE. We recommend using a different key, rewriting 'forces' to 'REF_forces'. You need to use --forces_key='REF_forces' to specify the chosen key name.
+2025-10-03 23:16:55.883 INFO: Test set 1/1 [energy: 1669, stress: 0, virials: 0, dipole components: 0, head: 1669, elec_temp: 0, total_charge: 0, polarizability: 0, total_spin: 0, forces: 1669, charges: 0]
+2025-10-03 23:16:55.895 INFO: Total Test set [energy: 1669, stress: 0, virials: 0, dipole components: 0, head: 1669, elec_temp: 0, total_charge: 0, polarizability: 0, total_spin: 0, forces: 1669, charges: 0]
+2025-10-03 23:16:55.896 INFO: Total number of configurations: train=475, valid=25, tests=[Default_Default: 1669],
+2025-10-03 23:16:55.900 INFO: Atomic Numbers used: [1, 6, 7, 8]
+2025-10-03 23:16:55.901 INFO: Isolated Atomic Energies (E0s) not in training file, using command line argument
+2025-10-03 23:16:55.902 INFO: Atomic Energies used (z: eV) for head Default: {1: -13.663181292231226, 6: -1029.2809654211628, 7: -1484.1187695035828, 8: -2042.0330099956639}
+2025-10-03 23:16:55.903 INFO: Processing datasets for head 'Default'
+2025-10-03 23:16:56.457 DEBUG: Successfully loaded dataset from ASE files: ['BOTNet-datasets/dataset_3BPA/train_300K.xyz']
+2025-10-03 23:16:56.458 INFO: Combining 1 list datasets for head 'Default'
+2025-10-03 23:16:56.495 INFO: Head 'Default' training dataset size: 475
+2025-10-03 23:16:56.498 INFO: Computing average number of neighbors
+2025-10-03 23:16:56.604 INFO: Average number of neighbors: 11.992914199829102
+2025-10-03 23:16:56.605 INFO: During training the following quantities will be reported: energy, forces
+2025-10-03 23:16:56.606 INFO: ===========MODEL DETAILS===========
+2025-10-03 23:16:56.714 INFO: Building model
+2025-10-03 23:16:56.716 INFO: Message passing with 32 channels and max_L=0 (32x0e)
+2025-10-03 23:16:56.717 INFO: 2 layers, each with correlation order: 3 (body order: 4) and spherical harmonics up to: l=3
+2025-10-03 23:16:56.718 INFO: 8 radial and 5 basis functions
+2025-10-03 23:16:56.720 INFO: Radial cutoff: 4.0 A (total receptive field for each atom: 8.0 A)
+2025-10-03 23:16:56.722 INFO: Distance transform for radial basis functions: None
+2025-10-03 23:16:56.724 INFO: Hidden irreps: 32x0e
+2025-10-03 23:16:58.586 DEBUG: ScaleShiftMACE(
+  (node_embedding): LinearNodeEmbeddingBlock(
+    (linear): Linear(4x0e -> 32x0e | 128 weights)
+  )
+  (radial_embedding): RadialEmbeddingBlock(
+    (bessel_fn): BesselBasis(r_max=4.0, num_basis=8, trainable=False)
+    (cutoff_fn): PolynomialCutoff(p=5, r_max=4.0)
+  )
+  (spherical_harmonics): SphericalHarmonics()
+  (atomic_energies_fn): AtomicEnergiesBlock(energies=[[-13.6632, -1029.2810, -1484.1188, -2042.0330]])
+  (interactions): ModuleList(
+    (0-1): 2 x RealAgnosticResidualInteractionBlock(
+      (linear_up): Linear(32x0e -> 32x0e | 1024 weights)
+      (conv_tp): TensorProduct(32x0e x 1x0e+1x1o+1x2e+1x3o -> 32x0e+32x1o+32x2e+32x3o | 128 paths | 128 weights)
+      (conv_tp_weights): FullyConnectedNet[8, 64, 64, 64, 128]
+      (linear): Linear(32x0e+32x1o+32x2e+32x3o -> 32x0e+32x1o+32x2e+32x3o | 4096 weights)
+      (skip_tp): FullyConnectedTensorProduct(32x0e x 4x0e -> 32x0e | 4096 paths | 4096 weights)
+      (reshape): reshape_irreps()
+    )
+  )
+  (products): ModuleList(
+    (0-1): 2 x EquivariantProductBasisBlock(
+      (symmetric_contractions): SymmetricContraction(
+        (contractions): ModuleList(
+          (0): Contraction(
+            (contractions_weighting): ModuleList(
+              (0-1): 2 x GraphModule()
+            )
+            (contractions_features): ModuleList(
+              (0-1): 2 x GraphModule()
+            )
+            (weights): ParameterList(
+                (0): Parameter containing: [torch.float32 of size 4x4x32]
+                (1): Parameter containing: [torch.float32 of size 4x1x32]
+            )
+            (graph_opt_main): GraphModule()
+          )
+        )
+      )
+      (linear): Linear(32x0e -> 32x0e | 1024 weights)
+    )
+  )
+  (readouts): ModuleList(
+    (0): LinearReadoutBlock(
+      (linear): Linear(32x0e -> 1x0e | 32 weights)
+    )
+    (1): NonLinearReadoutBlock(
+      (linear_1): Linear(32x0e -> 16x0e | 512 weights)
+      (non_linearity): Activation [x] (16x0e -> 16x0e)
+      (linear_2): Linear(16x0e -> 1x0e | 16 weights)
+    )
+  )
+  (scale_shift): ScaleShiftBlock(scale=0.9475, shift=-4.9936)
+)
+2025-10-03 23:16:58.588 INFO: Total number of parameters: 62128
+2025-10-03 23:16:58.591 INFO: 
+2025-10-03 23:16:58.594 INFO: ===========OPTIMIZER INFORMATION===========
+2025-10-03 23:16:58.597 INFO: Using ADAM as parameter optimizer
+2025-10-03 23:16:58.598 INFO: Batch size: 20
+2025-10-03 23:16:58.599 INFO: Using Exponential Moving Average with decay: 0.99
+2025-10-03 23:16:58.601 INFO: Number of gradient updates: 118
+2025-10-03 23:16:58.602 INFO: Learning rate: 0.01, weight decay: 5e-07
+2025-10-03 23:16:58.603 INFO: WeightedEnergyForcesLoss(energy_weight=1.000, forces_weight=100.000)
+2025-10-03 23:16:58.607 INFO: Stage Two (after 3 epochs) with loss function: WeightedEnergyForcesLoss(energy_weight=1000.000, forces_weight=100.000), with energy weight : 1000.0, forces weight : 100.0 and learning rate : 0.001
+2025-10-03 23:16:58.752 INFO: Using gradient clipping with tolerance=10.000
+2025-10-03 23:16:58.753 INFO: 
+2025-10-03 23:16:58.754 INFO: ===========TRAINING===========
+2025-10-03 23:16:58.757 INFO: Started training, reporting errors on validation set
+2025-10-03 23:16:58.760 INFO: Loss metrics on validation set
+2025-10-03 23:16:59.579 INFO: Initial: head: Default, loss=11.11455059, RMSE_E_per_atom=   10.55 meV, RMSE_F=  975.98 meV / A
+2025-10-03 23:17:19.456 INFO: Epoch 0: head: Default, loss=3.70784760, RMSE_E_per_atom=  317.56 meV, RMSE_F=  557.62 meV / A
+2025-10-03 23:17:19.463 DEBUG: Saving checkpoint: .\checkpoints\MACE_model_run-123_epoch-0.pt
+2025-10-03 23:17:41.195 INFO: Epoch 1: head: Default, loss=2.10039020, RMSE_E_per_atom=  368.79 meV, RMSE_F=  417.03 meV / A
+2025-10-03 23:17:41.200 DEBUG: Deleting old checkpoint file: .\checkpoints\MACE_model_run-123_epoch-0.pt
+2025-10-03 23:17:41.201 DEBUG: Saving checkpoint: .\checkpoints\MACE_model_run-123_epoch-1.pt
+2025-10-03 23:18:02.482 INFO: Epoch 2: head: Default, loss=1.22559416, RMSE_E_per_atom=  361.56 meV, RMSE_F=  318.05 meV / A
+2025-10-03 23:18:02.488 DEBUG: Deleting old checkpoint file: .\checkpoints\MACE_model_run-123_epoch-1.pt
+2025-10-03 23:18:02.490 DEBUG: Saving checkpoint: .\checkpoints\MACE_model_run-123_epoch-2.pt
+2025-10-03 23:18:02.519 INFO: Changing loss based on Stage Two Weights
+2025-10-03 23:18:24.167 INFO: Epoch 3: head: Default, loss=1.70672941, RMSE_E_per_atom=   36.29 meV, RMSE_F=  360.39 meV / A
+2025-10-03 23:18:24.173 DEBUG: Saving checkpoint: .\checkpoints\MACE_model_run-123_epoch-3_swa.pt
+2025-10-03 23:18:50.958 INFO: Epoch 4: head: Default, loss=1.10951579, RMSE_E_per_atom=    8.31 meV, RMSE_F=  303.78 meV / A
+2025-10-03 23:18:50.967 DEBUG: Deleting old checkpoint file: .\checkpoints\MACE_model_run-123_epoch-3_swa.pt
+2025-10-03 23:18:50.969 DEBUG: Saving checkpoint: .\checkpoints\MACE_model_run-123_epoch-4_swa.pt
+2025-10-03 23:18:51.025 INFO: Training complete
+2025-10-03 23:18:51.031 INFO: 
+2025-10-03 23:18:51.034 INFO: ===========RESULTS===========
+2025-10-03 23:18:55.691 INFO: Loading checkpoint: .\checkpoints\MACE_model_run-123_epoch-74.pt
+2025-10-03 23:18:55.732 INFO: Loaded Stage one model from epoch 74 for evaluation
+2025-10-03 23:18:55.735 INFO: Saving model to checkpoints\MACE_model_run-123.model
+2025-10-03 23:18:56.025 INFO: Compiling model, saving metadata to MACE_model_compiled.model
+2025-10-03 23:18:57.554 INFO: Computing metrics for training, validation, and test sets
+2025-10-03 23:18:57.558 INFO: Skipping evaluation for heads: ['pt_head']
+2025-10-03 23:18:57.560 INFO: Evaluating train_Default ...
+2025-10-03 23:19:03.776 INFO: Evaluating valid_Default ...
+2025-10-03 23:19:04.424 INFO: Error-table on TRAIN and VALID:
++---------------+---------------------+------------------+-------------------+
+|  config_type  | RMSE E / meV / atom | RMSE F / meV / A | relative F RMSE % |
++---------------+---------------------+------------------+-------------------+
+| train_Default |            0.9      |         46.0     |          4.87     |
+| valid_Default |            0.7      |         47.8     |          4.89     |
++---------------+---------------------+------------------+-------------------+
+2025-10-03 23:19:04.426 INFO: Evaluating Default_Default ...
+2025-10-03 23:19:39.596 INFO: Error-table on TEST:
++-----------------+---------------------+------------------+-------------------+
+|   config_type   | RMSE E / meV / atom | RMSE F / meV / A | relative F RMSE % |
++-----------------+---------------------+------------------+-------------------+
+| Default_Default |            0.9      |         49.4     |          5.14     |
++-----------------+---------------------+------------------+-------------------+
+2025-10-03 23:19:39.598 DEBUG: Running inference on train_Default dataset
+2025-10-03 23:19:39.905 DEBUG: Plotting failed: too many indices for tensor of dimension 1
+2025-10-03 23:19:39.919 INFO: Loading checkpoint: .\checkpoints\MACE_model_run-123_epoch-99_swa.pt
+2025-10-03 23:19:39.949 INFO: Loaded Stage two model from epoch 99 for evaluation
+2025-10-03 23:19:39.951 INFO: Saving model to checkpoints\MACE_model_run-123_stagetwo.model
+2025-10-03 23:19:40.214 INFO: Compiling model, saving metadata MACE_model_stagetwo_compiled.model
+2025-10-03 23:19:41.384 INFO: Computing metrics for training, validation, and test sets
+2025-10-03 23:19:41.388 INFO: Skipping evaluation for heads: ['pt_head']
+2025-10-03 23:19:41.390 INFO: Evaluating train_Default ...
+2025-10-03 23:19:47.477 INFO: Evaluating valid_Default ...
+2025-10-03 23:19:48.160 INFO: Error-table on TRAIN and VALID:
++---------------+---------------------+------------------+-------------------+
+|  config_type  | RMSE E / meV / atom | RMSE F / meV / A | relative F RMSE % |
++---------------+---------------------+------------------+-------------------+
+| train_Default |            0.8      |         44.3     |          4.68     |
+| valid_Default |            0.6      |         46.0     |          4.71     |
++---------------+---------------------+------------------+-------------------+
+2025-10-03 23:19:48.162 INFO: Evaluating Default_Default ...
+2025-10-03 23:20:21.544 INFO: Error-table on TEST:
++-----------------+---------------------+------------------+-------------------+
+|   config_type   | RMSE E / meV / atom | RMSE F / meV / A | relative F RMSE % |
++-----------------+---------------------+------------------+-------------------+
+| Default_Default |            0.8      |         47.7     |          4.96     |
++-----------------+---------------------+------------------+-------------------+
+2025-10-03 23:20:21.546 DEBUG: Running inference on train_Default dataset
+2025-10-03 23:20:21.886 DEBUG: Plotting failed: too many indices for tensor of dimension 1
+2025-10-03 23:20:21.886 INFO: Done
+2025-10-03 23:33:42.931 INFO: Using CPU
